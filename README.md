@@ -1,30 +1,67 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Name
 
-Currently, two official plugins are available:
+> Project Description.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The live demo [link](Add Deployed link Here) deployed on Netlify.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## 🛠 Built With
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Tech Stack
+
+- React.
+- Vite.
+- TypeScript.
+- Redux Toolkit.
+- React Router.
+- Tailwind.
+- Linters.
+
+### Key Features
+- Initialize the app using `vite` with `TypeScript` and `Tailwind`.
+- 
+
+## 💻 Getting Started
+
+### Prerequisites
+
+- Install [node.js](https://nodejs.org/en/).
+
+### Setup
+
+- Clone the project using git-bash or Githup Desktop.
+- Open the project folder with VSCode or any Editor.
+- Open the terminal and navigate to the project folder.
+
+### Usage
+
+- Run this command `npm install` to install dependencies.
+- Run this command `npm run dev` to start the dev server.
+
+
+## Author
+
+👨‍💻 **Omar Muhammad**
+
+- GitHub: [@Omar-Muhamad](https://github.com/Omar-Muhamad)
+- Twitter: [@Eng_OmarMuhamad](https://twitter.com/Eng_OmarMuhamad)
+- LinkedIn: [@eng-omarmuhammad](https://www.linkedin.com/in/eng-omarmuhammad/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the issues page.
+
+## ⭐️ Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
