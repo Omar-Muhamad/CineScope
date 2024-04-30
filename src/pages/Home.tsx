@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="text-xl">Home</div>
   )
 }
 export default Home
