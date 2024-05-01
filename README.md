@@ -1,7 +1,8 @@
 
-# Project Name
+# Cine Scope
 
-> Project Description.
+> Cine Scope is an entertainment web application that shows the latest and trending movies and TV series.
+> The user can sign up , login,search for certain movie or TV series, and save favorite movies and series.
 
 
 ## 🚀 Live Demo
@@ -22,7 +23,7 @@ The live demo [link](Add Deployed link Here) deployed on Netlify.
 - Linters.
 
 ### Key Features
-- Initialize the app using `vite` with `TypeScript` and `Tailwind`.
+- Initialize the app using `Vite` with `TypeScript` and `Tailwind`.
 - 
 
 ## 💻 Getting Started
@@ -33,7 +34,7 @@ The live demo [link](Add Deployed link Here) deployed on Netlify.
 
 ### Setup
 
-- Clone the project using git-bash or Githup Desktop.
+- Clone the project using git-bash or GitHub Desktop.
 - Open the project folder with VSCode or any Editor.
 - Open the terminal and navigate to the project folder.
 
