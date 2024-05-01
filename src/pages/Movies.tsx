@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchMovies } from "../redux/movies/moviesSlice";
 import { ItemData } from "@/types";
 
-const Movies = () => {
+const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -20,7 +20,7 @@ const Movies = () => {
       {!data.loading && data.error ? <p>error</p> : null}
       <ul>
         {!data.loading && data.movies && data.movies.length !== 0
-          ? data.movies.map((item: ItemData) => (
+          ? data.movies.map((item: Partial<ItemData>) => (
               <li key={item.id}>{item.title}</li>
             ))
           : null}
