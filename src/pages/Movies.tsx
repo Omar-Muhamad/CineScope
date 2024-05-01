@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { fetchMovies } from "../redux/movies/moviesSlice";
 import { ItemData } from "@/types";
 import { NavLink } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
 
 const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);
@@ -15,7 +16,7 @@ const Movies: FC = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <h1 className="text-xl">Popular Movies</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
@@ -28,7 +29,7 @@ const Movies: FC = () => {
             ))
           : null}
       </ul>
-    </>
+    </PageLayout>
   );
 };
 

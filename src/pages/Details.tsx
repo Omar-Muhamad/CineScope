@@ -1,10 +1,10 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchDetails } from "../redux/details/detailsSlice";
-import { ItemData } from "@/types";
-import { NavLink, useParams } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
 
 const Details: FC = () => {
   const data = useSelector((state: RootState) => state.details);
@@ -16,7 +16,7 @@ const Details: FC = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <h1 className="text-xl">Popular details</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
@@ -28,7 +28,7 @@ const Details: FC = () => {
           <p>{data.details.name}</p>
         )
       ) : null}
-    </>
+    </PageLayout>
   );
 };
 

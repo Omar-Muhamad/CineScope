@@ -12,8 +12,10 @@ import SignUp from "./pages/SignUp";
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <div className="flex text-white flex-col md:flex-row md:max-w-[1920px] md:mx-auto">
+      <header className="h-[100svh]">
+        <Navbar />
+      </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
@@ -25,7 +27,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

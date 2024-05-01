@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { fetchTv } from "../redux/tv/tvSlice";
 import { ItemData } from "@/types";
 import { NavLink } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
 
 const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
@@ -15,7 +16,7 @@ const Tv: FC = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <h1 className="text-xl">Popular TV Shows</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
@@ -28,7 +29,7 @@ const Tv: FC = () => {
             ))
           : null}
       </ul>
-    </>
+    </PageLayout>
   );
 };
 

@@ -1,16 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FC, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchRecommendations, fetchTrending } from "../redux/home/homeSlice";
 import { ItemData } from "@/types";
-import { NavLink } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
 
 const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
   const dispatch = useDispatch<AppDispatch>();
-
-  console.log(data.trending?.slice(0, 4));
 
   useEffect(() => {
     dispatch(fetchTrending());
@@ -18,13 +17,13 @@ const Home: FC = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <h1 className="text-xl">Trending</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
       <ul>
         {!data.loading && data.trending && data.trending.length !== 0
-          ? data.trending.slice(0, 4).map((item: Partial<ItemData>) =>
+          ? data.trending.slice(0, 5).map((item: Partial<ItemData>) =>
               item.media_type === "movie" ? (
                 <NavLink to={`/movie/${item.id}`} key={item.id}>
                   <li>{item.title}</li>
@@ -57,7 +56,7 @@ const Home: FC = () => {
             )
           : null}
       </ul>
-    </>
+    </PageLayout>
   );
 };
 export default Home;
