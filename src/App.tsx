@@ -13,7 +13,7 @@ import SignUp from "./pages/SignUp";
 function App() {
   return (
     <div className="flex text-white flex-col md:flex-row md:max-w-[1920px] md:mx-auto">
-      <header className="h-[100svh]">
+      <header className="md:h-[100svh] md:fixed">
         <Navbar />
       </header>
       <Routes>

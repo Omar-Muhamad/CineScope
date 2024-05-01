@@ -15,11 +15,11 @@ const Navbar = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
 
   return (
-    <nav className="flex flex-col justify-between items-center m-6 bg-secondary-dark rounded-2xl p-6">
+    <nav className="flex md:flex-col justify-between items-center md:m-6 p-6 bg-secondary-dark md:rounded-2xl">
       <NavLink to="/" className="main-logo">
-        <img className="h-8 w-8" src={logo} alt="Cine Scope logo" />
+        <img className="h-7 w-7 md:h-8 md:w-8" src={logo} alt="Cine Scope logo" />
       </NavLink>
-      <ul className="nav-links flex flex-col items-center gap-4">
+      <ul className="nav-links flex md:flex-col items-center gap-4">
         {navLinks.map((link) => (
           <NavIcon title={link.title} path={link.path} key={link.id} />
         ))}
