@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
-import Series from "./pages/Series";
+import Tv from "./pages/Tv";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/Series" element={<Series />} />
+        <Route path="/tv" element={<Tv />} />
         <Route path="/search" element={<Search />} />
         <Route path="/:id" element={<Details />} />
         <Route path="/favorites" element={<Favorites />} />
