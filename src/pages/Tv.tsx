@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchTv } from "../redux/tv/tvSlice";
 import { ItemData } from "@/types";
+import { NavLink } from "react-router-dom";
 
 const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
@@ -20,7 +21,11 @@ const Tv: FC = () => {
       {!data.loading && data.error ? <p>error</p> : null}
       <ul>
         {!data.loading && data.tv && data.tv.length !== 0
-          ? data.tv.map((item: Partial<ItemData>) => <li key={item.id}>{item.name}</li>)
+          ? data.tv.map((item: Partial<ItemData>) => (
+              <NavLink to={`/tv/${item.id}`} key={item.id}>
+                <li>{item.name}</li>
+              </NavLink>
+            ))
           : null}
       </ul>
     </>

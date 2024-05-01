@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchMovies } from "../redux/movies/moviesSlice";
 import { ItemData } from "@/types";
+import { NavLink } from "react-router-dom";
 
 const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);
@@ -21,7 +22,9 @@ const Movies: FC = () => {
       <ul>
         {!data.loading && data.movies && data.movies.length !== 0
           ? data.movies.map((item: Partial<ItemData>) => (
-              <li key={item.id}>{item.title}</li>
+              <NavLink to={`/movie/${item.id}`} key={item.id}>
+                <li>{item.title}</li>
+              </NavLink>
             ))
           : null}
       </ul>
