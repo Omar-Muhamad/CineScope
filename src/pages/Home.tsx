@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { FC, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import { AppDispatch, RootState } from "@/redux/store";
-import { fetchRecommendations, fetchTrending } from "../redux/home/homeSlice";
-import { ItemData } from "@/types";
 import PageLayout from "../components/layout/PageLayout";
 import GridLayout from "@/components/layout/GridLayout";
 import ItemCard from "@/components/ui/ItemCard";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchRecommendations, fetchTrending } from "@/redux/home/homeSlice";
+import { ItemData } from "@/types";
 
 const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
@@ -20,7 +20,7 @@ const Home: FC = () => {
 
   return (
     <PageLayout>
-      <h2 className="text-xl">Trending</h2>
+      <h1 className="text-xl">Trending</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
       <ul>
@@ -39,7 +39,8 @@ const Home: FC = () => {
           : null}
       </ul>
 
-      <GridLayout heading="Recommended for you">
+      <h2 className="text-xl mt-6">Recommendations</h2>
+      <GridLayout>
         {!data.loading &&
         data.recommendations &&
         data.recommendations.length !== 0

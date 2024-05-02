@@ -19,17 +19,18 @@ const ItemCard: FC<ItemCardProps> = ({
     <li>
       <div className="item-image w-full">
         <img
-          className="w-full"
+          className="w-full rounded-lg"
           src={`https://image.tmdb.org/t/p/original/${imgSrc}`}
           alt={`${title} poster`}
         />
       </div>
       <div className="item-description">
-        <div className="">
+        <div className="flex gap-2">
           <p className="realse-date">{releaseDate}</p>
           <span>•</span>
-          <div className="media-type">
+          <div className="media-type flex items-center gap-1">
             <img
+            className="w-3 h-3"
               src={`/src/assets/icons/icon-category-${mediaType}.svg`}
               alt={`${mediaType} icon`}
             />
@@ -38,7 +39,7 @@ const ItemCard: FC<ItemCardProps> = ({
           <span>•</span>
           <p className="ratings">{ratings}</p>
         </div>
-        <h3>{title}</h3>
+        <h3 className="text-lg font-bold">{title}</h3>
       </div>
     </li>
   );

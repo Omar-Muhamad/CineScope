@@ -1,11 +1,13 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import { AppDispatch, RootState } from "@/redux/store";
-import { fetchTv } from "../redux/tv/tvSlice";
-import { ItemData } from "@/types";
 import { NavLink } from "react-router-dom";
-import PageLayout from "../components/layout/PageLayout";
+
+import PageLayout from "@/components/layout/PageLayout";
+import ItemCard from "@/components/ui/ItemCard";
+import GridLayout from "@/components/layout/GridLayout";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchTv } from "@/redux/tv/tvSlice";
+import { ItemData } from "@/types";
 
 const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
@@ -17,18 +19,24 @@ const Tv: FC = () => {
 
   return (
     <PageLayout>
-      <h1 className="text-xl">Popular TV Shows</h1>
+      <h1 className="text-xl mt-6">Popular TV Shows</h1>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
-      <ul>
+      <GridLayout>
         {!data.loading && data.tv && data.tv.length !== 0
           ? data.tv.map((item: Partial<ItemData>) => (
               <NavLink to={`/tv/${item.id}`} key={item.id}>
-                <li>{item.name}</li>
+                <ItemCard
+                  imgSrc={item.backdrop_path}
+                  releaseDate={item.first_air_date?.substring(0, 4)}
+                  mediaType='tv'
+                  ratings={item.adult ? "18+" : "PG"}
+                  title={item.name}
+                />
               </NavLink>
             ))
           : null}
-      </ul>
+      </GridLayout>
     </PageLayout>
   );
 };
