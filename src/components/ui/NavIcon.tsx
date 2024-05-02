@@ -11,7 +11,7 @@ const NavIcon: FC<NavIconProps> = ({ path, title }) => {
     <NavLink to={path}>
       <div className="h-6 w-6">
         <img
-          className="h-full w-full bg-orange"
+          className="h-full w-full hover:fill-orange"
           src={`/src/assets/icons/icon-nav-${title}.svg`}
           alt={`Link for ${title} page`}
         />

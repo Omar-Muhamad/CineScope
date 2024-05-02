@@ -12,7 +12,7 @@ import SignUp from "./pages/SignUp";
 
 function App() {
   return (
-    <div className="flex text-white flex-col md:flex-row md:max-w-[1920px] md:mx-auto">
+    <div className="min-h-screen w-full max-w-[1920px] flex bg-main-dark text-white flex-col md:flex-row md:mx-auto">
       <header className="md:h-[100svh] md:fixed">
         <Navbar />
       </header>
@@ -20,7 +20,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/tv" element={<Tv />} />
-        <Route path="/search" element={<Search />} />
         <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/login" element={<Login />} />

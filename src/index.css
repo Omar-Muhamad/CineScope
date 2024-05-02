@@ -12,6 +12,28 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: black;
+}
+
+#root {
+  background-color: black;
+}
+
 nav {
   height: calc(100% - 3rem);
+}
+
+@media (min-width: 768px) {
+  .page-layout {
+    width: calc(100% - 8rem);
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

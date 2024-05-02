@@ -7,7 +7,6 @@ import logo from "@/assets/icons/logo.svg";
 const navLinks = [
   { id: 1, title: "movies", path: "/movies" },
   { id: 2, title: "tv", path: "/tv" },
-  { id: 3, title: "search", path: "/search" },
   { id: 4, title: "favorites", path: "/favorites" },
 ];
 
@@ -19,7 +18,7 @@ const Navbar = () => {
       <NavLink to="/" className="main-logo">
         <img className="h-7 w-7 md:h-8 md:w-8" src={logo} alt="Cine Scope logo" />
       </NavLink>
-      <ul className="nav-links flex md:flex-col items-center gap-4">
+      <ul className="nav-links flex md:flex-col items-center gap-6">
         {navLinks.map((link) => (
           <NavIcon title={link.title} path={link.path} key={link.id} />
         ))}
