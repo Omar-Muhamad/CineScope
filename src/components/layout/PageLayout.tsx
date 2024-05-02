@@ -5,7 +5,7 @@ type PageLayoutProps = { children: ReactNode };
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
-    <main className="mt-6 pt-6 md:ml-32">
+    <main className="m-6 md:mt-6 md:pt-6 md:ml-32 md:mr-6">
       <SearchBox />
       {children}
     </main>

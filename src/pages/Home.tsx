@@ -6,6 +6,8 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { fetchRecommendations, fetchTrending } from "../redux/home/homeSlice";
 import { ItemData } from "@/types";
 import PageLayout from "../components/layout/PageLayout";
+import GridLayout from "@/components/layout/GridLayout";
+import ItemCard from "@/components/ui/ItemCard";
 
 const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
@@ -18,7 +20,7 @@ const Home: FC = () => {
 
   return (
     <PageLayout>
-      <h1 className="text-xl">Trending</h1>
+      <h2 className="text-xl">Trending</h2>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
       <ul>
@@ -37,25 +39,35 @@ const Home: FC = () => {
           : null}
       </ul>
 
-      <h2 className="text-xl">Recommendations</h2>
-
-      <ul>
+      <GridLayout heading="Recommended for you">
         {!data.loading &&
         data.recommendations &&
         data.recommendations.length !== 0
           ? data.recommendations.map((item: Partial<ItemData>) =>
               item.media_type === "movie" ? (
                 <NavLink to={`/movie/${item.id}`} key={item.id}>
-                  <li>{item.title}</li>
+                  <ItemCard
+                    imgSrc={item.backdrop_path}
+                    releaseDate={item.release_date?.substring(0,4)}
+                    mediaType={item.media_type}
+                    ratings={item.adult ? "18+" : "PG"}
+                    title={item.title}
+                  />
                 </NavLink>
               ) : (
                 <NavLink to={`/tv/${item.id}`} key={item.id}>
-                  <li>{item.name}</li>
+                  <ItemCard
+                    imgSrc={item.backdrop_path}
+                    releaseDate={item.release_date?.substring(0,4)}
+                    mediaType={item.media_type}
+                    ratings={item.adult ? "18+" : "PG"}
+                    title={item.name}
+                  />
                 </NavLink>
               )
             )
           : null}
-      </ul>
+      </GridLayout>
     </PageLayout>
   );
 };
