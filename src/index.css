@@ -12,6 +12,15 @@
   box-sizing: border-box;
 }
 
+@font-face { 
+  font-family: "outfit-light"; 
+  src: url("/src/assets/fonts/Outfit-Light.ttf"); 
+} 
+@font-face { 
+  font-family: "outfit-medium"; 
+  src: url("/src/assets/fonts/Outfit-Medium.ttf"); 
+}
+
 body {
   background-color: black;
 }

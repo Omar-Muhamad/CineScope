@@ -12,6 +12,10 @@ export default {
         "gray": "#5A698F",
         "orange": "#FC4747",
       },
+      fontFamily :{ 
+        outfitLight: ["outfit-light","sans-serif"], 
+        outfitMedium: ["outfit-medium","sans-serif"], 
+      } 
     },
   },
   plugins: [],

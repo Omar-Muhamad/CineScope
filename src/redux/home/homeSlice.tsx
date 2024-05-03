@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ItemData } from "@/types";
 
-
 export interface DataState {
   loading?: boolean;
   trending?: ItemData[];
@@ -22,8 +21,7 @@ export const fetchTrending = createAsyncThunk(
   async () => {
     try {
       const params = {
-        // api_key: process.env.API_KEY,
-        api_key: 'fc8a1ee908366a2e7782c9f0ade9e6cd',
+        api_key: import.meta.env.VITE_APP_API_KEY,
         language: "en-US",
       };
       const response = await axios.get(
@@ -39,14 +37,13 @@ export const fetchTrending = createAsyncThunk(
 
 export const fetchRecommendations = createAsyncThunk(
   "data/fetchRecommendations",
-  async () => {
+  async ({ id }: { id: string }) => {
     try {
       const params = {
-        // api_key: process.env.API_KEY,
-        api_key: 'fc8a1ee908366a2e7782c9f0ade9e6cd',
+        api_key: import.meta.env.VITE_APP_API_KEY,
       };
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/693134/recommendations",
+        `https://api.themoviedb.org/3/movie/${id}/recommendations`,
         { params }
       );
       return response.data.results;
@@ -67,18 +64,19 @@ export const dataSlice = createSlice({
       })
       .addCase(fetchTrending.fulfilled, (state, action) => {
         state.loading = false;
-        state.trending= action.payload
+        state.trending = action.payload;
       })
       .addCase(fetchTrending.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
+      });
+    builder
       .addCase(fetchRecommendations.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchRecommendations.fulfilled, (state, action) => {
         state.loading = false;
-        state.recommendations= action.payload
+        state.recommendations = action.payload;
       })
       .addCase(fetchRecommendations.rejected, (state, action) => {
         state.loading = false;
