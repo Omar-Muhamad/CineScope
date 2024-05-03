@@ -3,6 +3,7 @@ import homeSlice from "./home/homeSlice";
 import moviesSlice from "./movies/moviesSlice";
 import tvSlice from "./tv/tvSlice";
 import detailsSlice from "./details/detailsSlice";
+import searchSlice from "./search/searchSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     movies: moviesSlice,
     tv: tvSlice,
     details: detailsSlice,
+    search: searchSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
