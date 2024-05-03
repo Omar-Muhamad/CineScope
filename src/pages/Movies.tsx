@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import ItemCard from "@/components/ui/ItemCard";
 import GridLayout from "@/components/layout/GridLayout";
+import Heading from "@/components/ui/Heading";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchMovies } from "@/redux/movies/moviesSlice";
 import { ItemData } from "@/types";
@@ -19,10 +20,10 @@ const Movies: FC = () => {
 
   return (
     <PageLayout>
-      <h1 className="text-xl mt-6">Popular Movies</h1>
+      <Heading as="h1">Popular Movies</Heading>
       <GridLayout>
-      {data.loading && <p>Loading...</p>}
-      {!data.loading && data.error ? <p>error</p> : null}
+        {data.loading && <p>Loading...</p>}
+        {!data.loading && data.error ? <p>error</p> : null}
         {!data.loading && data.movies && data.movies.length !== 0
           ? data.movies.map((item: Partial<ItemData>) => (
               <NavLink to={`/movie/${item.id}`} key={item.id}>

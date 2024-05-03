@@ -1,10 +1,11 @@
-import PageLayout from "@/components/layout/PageLayout"
+import PageLayout from "@/components/layout/PageLayout";
+import Heading from "@/components/ui/Heading";
 
 const Favorites = () => {
   return (
     <PageLayout>
-      <h1 className="text-xl mt-6">Bookmarked Movies</h1>
+      <Heading as="h1">Bookmarked Movies</Heading>
     </PageLayout>
-  )
-}
-export default Favorites
+  );
+};
+export default Favorites;

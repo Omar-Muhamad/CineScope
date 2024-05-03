@@ -8,6 +8,7 @@ import GridLayout from "@/components/layout/GridLayout";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchTv } from "@/redux/tv/tvSlice";
 import { ItemData } from "@/types";
+import Heading from "@/components/ui/Heading";
 
 const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
@@ -19,7 +20,7 @@ const Tv: FC = () => {
 
   return (
     <PageLayout>
-      <h1 className="text-xl mt-6">Popular TV Shows</h1>
+      <Heading as="h1">Popular TV Shows</Heading>
       {data.loading && <p>Loading...</p>}
       {!data.loading && data.error ? <p>error</p> : null}
       <GridLayout>
@@ -29,7 +30,7 @@ const Tv: FC = () => {
                 <ItemCard
                   imgSrc={item.backdrop_path}
                   releaseDate={item.first_air_date?.substring(0, 4)}
-                  mediaType='tv'
+                  mediaType="tv"
                   ratings={item.adult ? "18+" : "PG"}
                   title={item.name}
                 />

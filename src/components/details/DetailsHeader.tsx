@@ -1,4 +1,6 @@
 import { FC } from "react";
+import Text from "../ui/Text";
+import Heading from "../ui/Heading";
 
 type DetailsHeaderProps = {
   title: string;
@@ -34,13 +36,13 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           />
         </div>
         <div className="h-full grow">
-          <h1 className="text-3xl font-bold">{title}</h1>
+          <Heading as='h1'>{title}</Head>
           <div className="">
             <span>⭐️</span>
             <span>{rating}/10</span>
           </div>
           <div className="flex gap-2">
-            <p>{releaseDate}</p>
+            <Text>{releaseDate}</Text>
             <span>•</span>
             <div className="media-type flex items-center gap-1">
               <img
@@ -48,7 +50,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
                 src={`/src/assets/icons/icon-category-${mediaType}.svg`}
                 alt={`${mediaType} icon`}
               />
-              <p>{mediaType}</p>
+              <Text>{mediaType}</Text>
             </div>
           </div>
         </div>

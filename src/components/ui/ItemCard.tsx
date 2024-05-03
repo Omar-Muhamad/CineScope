@@ -1,4 +1,6 @@
 import { FC } from "react";
+import Heading from "./Heading";
+import Text from "./Text";
 
 type ItemCardProps = {
   imgSrc: string | undefined;
@@ -15,31 +17,35 @@ const ItemCard: FC<ItemCardProps> = ({
   ratings,
   title,
 }) => {
+  const imageSrc =
+    imgSrc === null ? null : `https://image.tmdb.org/t/p/original/${imgSrc}`;
   return (
     <li>
       <div className="item-image w-full">
         <img
           className="w-full rounded-lg"
-          src={`https://image.tmdb.org/t/p/original/${imgSrc}`}
+          src={imageSrc || "/src/assets/images/default-poster.png"}
           alt={`${title} poster`}
         />
       </div>
-      <div className="item-description">
+      <div className="mt-2">
         <div className="flex gap-2">
-          <p className="realse-date">{releaseDate}</p>
+          <Text>{releaseDate}</Text>
           <span>•</span>
           <div className="media-type flex items-center gap-1">
             <img
-            className="w-3 h-3"
+              className="w-3 h-3"
               src={`/src/assets/icons/icon-category-${mediaType}.svg`}
               alt={`${mediaType} icon`}
             />
-            <p>{mediaType}</p>
+            <Text>{mediaType}</Text>
           </div>
           <span>•</span>
-          <p className="ratings">{ratings}</p>
+          <Text>{ratings}</Text>
         </div>
-        <h3 className="text-lg font-bold">{title}</h3>
+        <Heading as="h3" size="sm">
+          {title}
+        </Heading>
       </div>
     </li>
   );

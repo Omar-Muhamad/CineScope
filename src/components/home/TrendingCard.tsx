@@ -1,4 +1,6 @@
 import { FC } from "react";
+import Text from "../ui/Text";
+import Heading from "../ui/Heading";
 
 type TrendingCardProps = {
   imgSrc: string | undefined;
@@ -8,7 +10,13 @@ type TrendingCardProps = {
   title: string | undefined;
 };
 
-const TrendingCard: FC<TrendingCardProps> = ({ imgSrc, releaseDate, mediaType, ratings, title }) => {
+const TrendingCard: FC<TrendingCardProps> = ({
+  imgSrc,
+  releaseDate,
+  mediaType,
+  ratings,
+  title,
+}) => {
   return (
     <li>
       <div className="item-image w-[60vw] md:w-[30vw]">
@@ -20,7 +28,7 @@ const TrendingCard: FC<TrendingCardProps> = ({ imgSrc, releaseDate, mediaType, r
       </div>
       <div className="item-description">
         <div className="flex gap-2">
-          <p className="realse-date">{releaseDate}</p>
+          <Text>{releaseDate}</Text>
           <span>•</span>
           <div className="media-type flex items-center gap-1">
             <img
@@ -28,12 +36,12 @@ const TrendingCard: FC<TrendingCardProps> = ({ imgSrc, releaseDate, mediaType, r
               src={`/src/assets/icons/icon-category-${mediaType}.svg`}
               alt={`${mediaType} icon`}
             />
-            <p>{mediaType}</p>
+            <Text>{mediaType}</Text>
           </div>
           <span>•</span>
-          <p className="ratings">{ratings}</p>
+          <Text>{ratings}</Text>
         </div>
-        <h3 className="text-lg font-bold">{title}</h3>
+        <Heading as="h3" size="sm">{title}</Heading>
       </div>
     </li>
   );

@@ -9,6 +9,7 @@ import GridLayout from "@/components/layout/GridLayout";
 import { fetchRecommendations } from "@/redux/home/homeSlice";
 import ItemCard from "@/components/ui/ItemCard";
 import { ItemData } from "@/types";
+import Heading from "@/components/ui/Heading";
 
 const Details: FC = () => {
   const data = useSelector((state: RootState) => state.details);
@@ -21,7 +22,7 @@ const Details: FC = () => {
   }, [dispatch, id, mediaType]);
 
   return (
-    <main className="page-layout md:ml-32 md:pl-6 md:pl-0">
+    <main className="page-layout md:ml-32 md:pl-0">
       <div className="">
         {data.loading && <p>Loading...</p>}
         {!data.loading && data.error ? <p>error</p> : null}
@@ -49,7 +50,7 @@ const Details: FC = () => {
         ) : null}
       </div>
       <section className="pl-6 md:pl-0">
-        <h2 className="text-3xl font-bold mt-6">Recommendations</h2>
+        <Heading as="h2">Recommendations</Heading>
         <GridLayout>
           {!data.loading &&
           data.recommendations &&

@@ -23,7 +23,6 @@ function App() {
         <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

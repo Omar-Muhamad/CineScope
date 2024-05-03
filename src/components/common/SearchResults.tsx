@@ -4,6 +4,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import ItemCard from "../ui/ItemCard";
 import GridLayout from "../layout/GridLayout";
+import Heading from "../ui/Heading";
 
 type SearchResultsProps = {
   data: DataState;
@@ -14,12 +15,12 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   const movies = searchData?.filter((item) => item.media_type === "movie");
   const tvShows = searchData?.filter((item) => item.media_type === "tv");
   return (
-    <>
-    <h1 className="mt-10 text-3xl font-bold">Search Results</h1>
+    <main>
+      <Heading as="h1">Search Results</Heading>
       {loading && <p>Loading...</p>}
       {!loading && error ? <p>error</p> : null}
-      <section className="movies mt-6">
-        <h2 className="text-3xl">Movies</h2>
+      <section>
+        <Heading as="h2">Movies</Heading>
         {!loading && movies && movies?.length !== 0 ? (
           <GridLayout>
             {movies?.map((movie: Partial<ItemData>) => (
@@ -38,9 +39,9 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
           <div className="">No movies match your search</div>
         )}
       </section>
-      <section className="movies">
-        <h2 className="tv-shows mt-6 text-3xl">TV Shows</h2>
-      {!loading && tvShows && tvShows?.length !== 0 ? (
+      <section>
+        <Heading as="h2">TV Shows</Heading>
+        {!loading && tvShows && tvShows?.length !== 0 ? (
           <GridLayout>
             {tvShows?.map((tvShow: Partial<ItemData>) => (
               <NavLink to={`/tv/${tvShow.id}`} key={tvShow.id}>
@@ -58,7 +59,7 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
           <div className="">No movies match your search</div>
         )}
       </section>
-    </>
+    </main>
   );
 };
 export default SearchResults;

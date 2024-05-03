@@ -10,6 +10,7 @@ import { fetchRecommendations, fetchTrending } from "@/redux/home/homeSlice";
 import { ItemData } from "@/types";
 import Trending from "@/components/home/Trending";
 import TrendingCard from "@/components/home/TrendingCard";
+import Heading from "@/components/ui/Heading";
 
 const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
@@ -17,12 +18,14 @@ const Home: FC = () => {
 
   useEffect(() => {
     dispatch(fetchTrending());
-    dispatch(fetchRecommendations({ id: "693134"}));
-  }, []);
+    dispatch(fetchRecommendations({ id: "693134" }));
+  }, [dispatch]);
 
   return (
     <PageLayout>
-      <h1 className="text-3xl font-bold mt-6">Trending</h1>
+      <Heading as="h1" className="mt-6">
+        Trending
+      </Heading>
       <Trending>
         {data.loading && <p>Loading...</p>}
         {!data.loading && data.error ? <p>error</p> : null}
@@ -55,7 +58,7 @@ const Home: FC = () => {
       </Trending>
 
       <section>
-        <h2 className="text-3xl font-bold mt-6">Recommendations</h2>
+        <Heading as="h2">Recommendations</Heading>
         <GridLayout>
           {!data.loading &&
           data.recommendations &&
