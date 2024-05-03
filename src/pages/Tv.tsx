@@ -16,7 +16,7 @@ const Tv: FC = () => {
 
   useEffect(() => {
     dispatch(fetchTv());
-  }, []);
+  }, [dispatch]);
 
   return (
     <PageLayout>

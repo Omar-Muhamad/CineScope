@@ -3,12 +3,10 @@ import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Tv from "./pages/Tv";
-import Search from "./pages/Search";
 import Details from "./pages/Details";
 import Favorites from "./pages/Favorites";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
 
 function App() {
   return (

@@ -16,7 +16,7 @@ const Movies: FC = () => {
 
   useEffect(() => {
     dispatch(fetchMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <PageLayout>

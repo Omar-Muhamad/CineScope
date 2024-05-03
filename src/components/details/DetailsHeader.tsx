@@ -36,7 +36,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           />
         </div>
         <div className="h-full grow">
-          <Heading as='h1'>{title}</Head>
+          <Heading as='h1'>{title}</Heading>
           <div className="">
             <span>⭐️</span>
             <span>{rating}/10</span>
