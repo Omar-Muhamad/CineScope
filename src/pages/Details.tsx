@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, useParams } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchDetails } from "@/redux/details/detailsSlice";
@@ -18,7 +18,7 @@ const Details: FC = () => {
   useEffect(() => {
     dispatch(fetchDetails({ mediaType, id }));
     dispatch(fetchRecommendations({ id: "693134" }));
-  }, []);
+  }, [dispatch, id, mediaType]);
 
   return (
     <main className="page-layout md:ml-32 md:pl-6 md:pl-0">

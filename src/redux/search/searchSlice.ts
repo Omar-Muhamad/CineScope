@@ -4,13 +4,13 @@ import axios from "axios";
 
 export interface DataState {
   loading?: boolean;
-  searchedData?: ItemData[];
+  searchData?: ItemData[];
   error: string | undefined;
 }
 
 const initialState: DataState = {
   loading: false,
-  searchedData: [],
+  searchData: [],
   error: undefined,
 };
 
@@ -44,7 +44,7 @@ export const searchSlice = createSlice({
       })
       .addCase(fetchSearch.fulfilled, (state, action) => {
         state.loading = false;
-        state.searchedData = action.payload;
+        state.searchData = action.payload;
       })
       .addCase(fetchSearch.rejected, (state, action) => {
         state.loading = false;

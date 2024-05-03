@@ -1,13 +1,31 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import SearchBox from "../common/SearchBox";
+import { useSearchParams } from "react-router-dom";
+import SearchResults from "../common/SearchResults";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { fetchSearch } from "@/redux/search/searchSlice";
 
 type PageLayoutProps = { children: ReactNode };
 
 const PageLayout: FC<PageLayoutProps> = ({ children }) => {
+  const searchData = useSelector((state: RootState) => state.search);
+  const dispatch = useDispatch<AppDispatch>();
+  console.log(searchData);
+
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search");
+
+  useEffect(() => {
+    const query = searchParams.get("search");
+    if (query) {
+      dispatch(fetchSearch({ query }));
+    }
+  }, [searchParams, dispatch])
   return (
     <main className="page-layout md:pt-6 md:ml-32 pl-6  md:pl-0">
       <SearchBox />
-      {children}
+      {searchQuery ? <SearchResults data={searchData} /> : children}
     </main>
   );
 };

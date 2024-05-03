@@ -1,17 +1,11 @@
-import { fetchSearch } from "@/redux/search/searchSlice";
-import { AppDispatch } from "@/redux/store";
-import { RootState } from "@/redux/store";
-import { ChangeEvent, FC, KeyboardEvent, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
+import { ChangeEvent, FC, KeyboardEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const SearchBox: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams("");
-  const searchData = useSelector((state: RootState) => state.search);
-  const dispatch = useDispatch<AppDispatch>();
-
-  console.log('rendered');
-
+  console.log(searchParams);
+  
   const handleSearch = (
     event: KeyboardEvent<HTMLInputElement> & ChangeEvent<HTMLInputElement>
   ) => {
@@ -23,14 +17,6 @@ const SearchBox: FC = () => {
     }
   };
 
-  useEffect(() => {
-    const query = searchParams.get("search");
-    if (query) {
-      dispatch(fetchSearch({ query }));
-    }
-  }, [searchParams])
-  
-  console.log('searchData: ', searchData);
   return (
     <div className="w-full flex gap-6 items-start mt-5 pr-6 ">
       <div className="w-9 h-9 md:w-10 md:h-10">
