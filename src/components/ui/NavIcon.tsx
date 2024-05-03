@@ -1,21 +1,22 @@
 import { FC } from "react";
+import { IconType } from "react-icons";
 import { NavLink } from "react-router-dom";
 
 type NavIconProps = {
-  path: string;
-  title: string;
+  link: {
+    id: number;
+    path: string;
+    title: string;
+    icon: IconType;
+  };
 };
 
-const NavIcon: FC<NavIconProps> = ({ path, title }) => {
+const NavIcon: FC<NavIconProps> = ({ link }) => {
+  const { path, icon } = link;
+  const Icon = icon;
   return (
-    <NavLink to={path}>
-      <div className="h-6 w-6">
-        <img
-          className="h-full w-full hover:fill-orange"
-          src={`/src/assets/icons/icon-nav-${title}.svg`}
-          alt={`Link for ${title} page`}
-        />
-      </div>
+    <NavLink className="text-2xl text-gray hover:text-white aria-[current=page]:text-white" to={path}>
+      <Icon />
     </NavLink>
   );
 };

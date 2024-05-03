@@ -9,8 +9,8 @@ const headingClasses = cva(["antialiased"], {
       sm: ["text-lg"],
     },
     as: {
-      h1: ["font-outfitLight", "mt-10"],
-      h2: ["font-outfitLight", "mt-8"],
+      h1: ["font-outfitLight", "mt-8"],
+      h2: ["font-outfitLight", "mt-6"],
       h3: ["font-outfitMedium"],
       h4: ["font-outfitMedium"],
       h5: ["font-outfitMedium"],
