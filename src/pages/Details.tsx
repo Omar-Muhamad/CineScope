@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, NavLink, useParams } from "react-router-dom";
+import {  NavLink, useParams } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchDetails } from "@/redux/details/detailsSlice";
@@ -35,7 +35,9 @@ const Details: FC = () => {
               imageSrc={data.details.backdrop_path}
               releaseDate={data.details.release_date?.substring(0, 4)}
               mediaType={mediaType}
+              genres={data.details.genres}
               rating={data.details.vote_average?.toFixed(1)}
+              overview={data.details.overview}
             />
           ) : (
             <DetailsHeader
@@ -44,7 +46,9 @@ const Details: FC = () => {
               imageSrc={data.details.backdrop_path}
               releaseDate={data.details.first_air_date?.substring(0, 4)}
               mediaType={mediaType}
+              genres={data.details.genres}
               rating={data.details.vote_average?.toFixed(1)}
+              overview={data.details.overview}
             />
           )
         ) : null}
