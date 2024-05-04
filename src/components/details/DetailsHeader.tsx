@@ -7,7 +7,6 @@ import Heading from "../ui/Heading";
 import PercentageCircle from "../ui/PercentageCircle";
 import BookMark from "../ui/BookMark";
 import TrailerButton from "./TrailerButton";
-import useComponentVisible from "@/hooks/useComponentVisible";
 
 type DetailsHeaderProps = {
   title: string;
@@ -34,6 +33,8 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
   overview,
 }) => {
   const [trailerUrl, setTrailerUrl] = useState<null | string>(null);
+  const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
+  console.log(isModalOpened);
 
   const handlePlayTrailer = async () => {
     try {
@@ -43,12 +44,14 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
         const embedUrl = `https://youtube.com/embed/${url.split("v=")[1]}`;
         setTrailerUrl(embedUrl);
       }
+      setIsModalOpened(true);
     } catch {
       setTrailerUrl(null);
     }
   };
 
   const handleCloseBtn = () => {
+    setIsModalOpened(false);
     setTrailerUrl(null);
   };
 
@@ -114,9 +117,11 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
         </div>
       </section>
       {trailerUrl === null ? (
-        <Heading as="h1" className="text-center">
-          Sorry, no trailer found
-        </Heading>
+        isModalOpened && (
+          <Heading as="h1" className="text-center">
+            Sorry, no trailer found
+          </Heading>
+        )
       ) : (
         <div className="absolute z-20 top-0 bottom-0 left-0 right-0 bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
           <div className="relative w-[375px] h-[220px] md:w-[640px] md:h-[360px] lg:w-[854px] lg:h-[480px]">
