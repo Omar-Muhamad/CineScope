@@ -5,6 +5,7 @@ import tvSlice from "./tv/tvSlice";
 import detailsSlice from "./details/detailsSlice";
 import searchSlice from "./search/searchSlice";
 import userSlice from "./user/userSlice";
+import bookmarkSlice from "./bookmarked/bookmarkSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     tv: tvSlice,
     details: detailsSlice,
     search: searchSlice,
+    bookmark: bookmarkSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
