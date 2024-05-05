@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type userData = {
+export type UserData = {
   gravatar: string;
   id: number;
   name: string;
@@ -9,7 +9,7 @@ type userData = {
 
 export interface userState {
   loading: boolean;
-  user: userData | null;
+  user: UserData | null;
   session_id: string | null;
   error: string | null;
 }
@@ -90,6 +90,29 @@ export const getUserDetails = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  "user/logoutUser",
+  async ({ session_id }: { session_id: string }) => {
+    const params = {
+      api_key: import.meta.env.VITE_APP_API_KEY,
+      session_id,
+    };
+
+    try {
+      const response = await axios.delete(
+        "https://api.themoviedb.org/3/authentication/session",
+        {
+          params,
+        }
+      );
+      return response.data.success;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -119,6 +142,19 @@ const userSlice = createSlice({
         state.loading = false;
         state.error =
           action.error.message || "Error during fetching user details.";
+      });
+    builder
+      .addCase(logoutUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.loading = false;
+        state.user = null;
+        state.session_id = null;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Error during logout.";
       });
   },
 });

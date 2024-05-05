@@ -46,8 +46,9 @@ const Login = () => {
       )}
 
       {loading && (
-        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center gap-6 rounded-xl">
-          <Heading as="h1">Logging in...</Heading>
+        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center items-center gap-6 rounded-xl">
+          <div className="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin" />
+          <Heading as="h1" className="mt-0">Logging in...</Heading>
         </div>
       )}
 
