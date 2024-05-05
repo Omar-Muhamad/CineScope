@@ -2,21 +2,18 @@ import { FC } from "react";
 
 type UserIconProps = {
   isLogged: boolean;
+  hash: string | undefined;
 };
 
-const UserIcon: FC<UserIconProps> = ({ isLogged }) => {
+const UserIcon: FC<UserIconProps> = ({ isLogged, hash }) => {
   return (
-    <>
-      {isLogged ? (
-        <button>
-          <img src="" alt="" />
-        </button>
-      ) : (
-        <button className="h-8 w-8">
-          <img className="h-full w-full" src="/src/assets/icons/user.png" alt="Empty user image" />
-        </button>
-      )}
-    </>
+    <button className="h-10 w-10">
+      <img
+        className="h-full w-full rounded-full border-2 border-transparent hover:border-orange"
+        src={ isLogged ? `https://gravatar.com/avatar/${hash}`: "/src/assets/icons/user.png"}
+        alt="User logo"
+      />
+    </button>
   );
 };
 export default UserIcon;

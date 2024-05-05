@@ -76,7 +76,13 @@ export const getUserDetails = createAsyncThunk(
       const response = await axios.get("https://api.themoviedb.org/3/account", {
         params,
       });
-      return response.data;
+      const { avatar, id, name } = response.data;
+      const data = {
+        gravatar: avatar.gravatar.hash,
+        id,
+        name,
+      };
+      return data;
     } catch (error) {
       console.log(error);
       return error;
@@ -100,6 +106,19 @@ const userSlice = createSlice({
       .addCase(userLogin.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Error during login.";
+      });
+    builder
+      .addCase(getUserDetails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getUserDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(getUserDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error =
+          action.error.message || "Error during fetching user details.";
       });
   },
 });
