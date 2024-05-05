@@ -4,9 +4,11 @@ import moviesSlice from "./movies/moviesSlice";
 import tvSlice from "./tv/tvSlice";
 import detailsSlice from "./details/detailsSlice";
 import searchSlice from "./search/searchSlice";
+import userSlice from "./user/userSlice";
 
 export const store = configureStore({
   reducer: {
+    user: userSlice,
     home: homeSlice,
     movies: moviesSlice,
     tv: tvSlice,

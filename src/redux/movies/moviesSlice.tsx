@@ -2,19 +2,19 @@ import { ItemData } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export interface DataState {
+export interface MovieState {
   loading?: boolean;
   movies?: ItemData[];
   error: string | undefined;
 }
 
-const initialState: DataState = {
+const initialState: MovieState = {
   loading: false,
   movies: [],
   error: undefined,
 };
 
-export const fetchMovies = createAsyncThunk("data/fetchMovies", async () => {
+export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   try {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,

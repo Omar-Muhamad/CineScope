@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
@@ -9,11 +9,14 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 
 function App() {
+  const { pathname } = useLocation();
   return (
     <div className="font-outfitLight min-h-screen w-full max-w-[1920px] flex bg-main-dark text-white flex-col md:flex-row md:mx-auto">
-      <header className="md:h-[100svh] md:fixed">
-        <Navbar />
-      </header>
+      {pathname !== "/login" && (
+        <header className="md:h-[100svh] md:fixed">
+          <Navbar />
+        </header>
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />

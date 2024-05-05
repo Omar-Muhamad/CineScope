@@ -14,7 +14,7 @@ const initialState: DataState = {
   error: undefined,
 };
 
-export const fetchTv = createAsyncThunk("data/fetchTv", async () => {
+export const fetchTv = createAsyncThunk("tv/fetchTv", async () => {
   try {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,
