@@ -9,6 +9,7 @@ import BookMark from "../ui/BookMark";
 import TrailerButton from "./TrailerButton";
 
 type DetailsHeaderProps = {
+  id: number;
   title: string;
   rating: number;
   releaseDate: string;
@@ -23,6 +24,7 @@ type DetailsHeaderProps = {
 };
 
 const DetailsHeader: FC<DetailsHeaderProps> = ({
+  id,
   posterUrl,
   title,
   rating,
@@ -34,7 +36,6 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 }) => {
   const [trailerUrl, setTrailerUrl] = useState<null | string>(null);
   const [isModalOpened, setIsModalOpened] = useState<boolean>(false);
-  console.log(isModalOpened);
 
   const handlePlayTrailer = async () => {
     try {
@@ -101,7 +102,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
             <div className="mt-2 flex gap-2">
               <PercentageCircle rating={rating * 10} />
-              <BookMark />
+              <BookMark id={id} media_type={mediaType}/>
               <TrailerButton onClick={handlePlayTrailer} />
             </div>
 

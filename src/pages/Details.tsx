@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchDetails } from "@/redux/details/detailsSlice";
@@ -30,6 +30,7 @@ const Details: FC = () => {
         {!data.loading && data.details ? (
           mediaType === "movie" ? (
             <DetailsHeader
+              id={data.details.id}
               posterUrl={data.details.poster_path}
               title={data.details.title}
               imageSrc={data.details.backdrop_path}
@@ -41,6 +42,7 @@ const Details: FC = () => {
             />
           ) : (
             <DetailsHeader
+              id={data.details.id}
               posterUrl={data.details.poster_path}
               title={data.details.name}
               imageSrc={data.details.backdrop_path}
