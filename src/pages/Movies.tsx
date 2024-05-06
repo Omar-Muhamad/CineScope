@@ -1,6 +1,5 @@
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 
 import PageLayout from "@/components/layout/PageLayout";
 import ItemCard from "@/components/ui/ItemCard";
@@ -8,37 +7,41 @@ import GridLayout from "@/components/layout/GridLayout";
 import Heading from "@/components/ui/Heading";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchMovies } from "@/redux/movies/moviesSlice";
-import { ItemData } from "@/types";
+import Loading from "@/components/ui/Loading";
 
 const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);
   const dispatch = useDispatch<AppDispatch>();
+
+  const { loading, movies, error } = data;
 
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
   return (
-    <PageLayout>
-      <Heading as="h1">Popular Movies</Heading>
-      <GridLayout>
-        {data.loading && <p>Loading...</p>}
-        {!data.loading && data.error ? <p>error</p> : null}
-        {!data.loading && data.movies && data.movies.length !== 0
-          ? data.movies.map((item: Partial<ItemData>) => (
-              <NavLink to={`/movie/${item.id}`} key={item.id}>
+    // <Suspense fallback={<Loading />}>
+      <PageLayout>
+        {loading && <Loading />}
+        <Heading as="h1">Popular Movies</Heading>
+        <GridLayout>
+          {!loading && error ? <p>error</p> : null}
+          {!loading && movies && movies.length !== 0
+            ? movies.map((movie) => (
                 <ItemCard
-                  imgSrc={item.backdrop_path}
-                  releaseDate={item.release_date?.substring(0, 4)}
-                  mediaType={item.media_type}
-                  ratings={item.adult ? "18+" : "PG"}
-                  title={item.title}
+                  key={movie.id}
+                  id={movie.id}
+                  imgSrc={movie.backdrop_path}
+                  releaseDate={movie.release_date?.substring(0, 4)}
+                  media_type="movie"
+                  ratings={movie.adult ? "18+" : "PG"}
+                  title={movie.title}
                 />
-              </NavLink>
-            ))
-          : null}
-      </GridLayout>
-    </PageLayout>
+              ))
+            : null}
+        </GridLayout>
+      </PageLayout>
+    // </Suspense>
   );
 };
 

@@ -1,7 +1,7 @@
-import { DataState } from "@/redux/search/searchSlice";
-import { ItemData } from "@/types";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+
+import { DataState, SearchData } from "@/redux/search/searchSlice";
 import ItemCard from "../ui/ItemCard";
 import GridLayout from "../layout/GridLayout";
 import Heading from "../ui/Heading";
@@ -12,8 +12,8 @@ type SearchResultsProps = {
 
 const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   const { loading, searchData, error } = data;
-  const movies = searchData?.filter((item) => item.media_type === "movie");
-  const tvShows = searchData?.filter((item) => item.media_type === "tv");
+  const movies = searchData?.filter((item: SearchData) => item.media_type === "movie");
+  const tvShows = searchData?.filter((item: SearchData) => item.media_type === "tv");
   return (
     <main>
       <Heading as="h1">Search Results</Heading>
@@ -23,12 +23,13 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
         <Heading as="h2">Movies</Heading>
         {!loading && movies && movies?.length !== 0 ? (
           <GridLayout>
-            {movies?.map((movie: Partial<ItemData>) => (
+            {movies?.map((movie: SearchData) => (
               <NavLink to={`/movie/${movie.id}`} key={movie.id}>
                 <ItemCard
+                  id={movie.id}
                   imgSrc={movie.backdrop_path}
                   releaseDate={movie.release_date?.substring(0, 4)}
-                  mediaType={movie.media_type}
+                  media_type={movie.media_type}
                   ratings={movie.adult ? "18+" : "PG"}
                   title={movie.title}
                 />
@@ -43,12 +44,13 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
         <Heading as="h2">TV Shows</Heading>
         {!loading && tvShows && tvShows?.length !== 0 ? (
           <GridLayout>
-            {tvShows?.map((tvShow: Partial<ItemData>) => (
+            {tvShows?.map((tvShow: SearchData) => (
               <NavLink to={`/tv/${tvShow.id}`} key={tvShow.id}>
                 <ItemCard
+                  id={tvShow.id}
                   imgSrc={tvShow.backdrop_path}
                   releaseDate={tvShow.first_air_date?.substring(0, 4)}
-                  mediaType="tv"
+                  media_type="tv"
                   ratings={tvShow.adult ? "18+" : "PG"}
                   title={tvShow.name}
                 />

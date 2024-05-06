@@ -46,15 +46,15 @@ const Login = () => {
       )}
 
       {loading && (
-        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center items-center gap-6 rounded-xl">
+        <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center items-center gap-6 rounded-xl">
           <div className="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin" />
           <Heading as="h1" className="mt-0">Logging in...</Heading>
         </div>
       )}
 
       {!loading && !isLogged && (
-        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center gap-6 rounded-xl">
-          <Heading as="h1" className="mt-0">
+        <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center gap-6 rounded-xl">
+          <Heading as="h1" className="-mt-1">
             Login
           </Heading>
           <Text>
@@ -69,7 +69,7 @@ const Login = () => {
       )}
 
       {isLogged && loading === false ? (
-        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center gap-6 rounded-xl">
+        <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center gap-6 rounded-xl">
           <div className="flex flex-col items-center justify-center gap-6">
             <IoIosCheckmarkCircleOutline className="text-6xl text-orange" />
             <Heading as="h1" className="mt-0">

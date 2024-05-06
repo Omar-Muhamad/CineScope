@@ -1,12 +1,12 @@
-import { FC } from "react"
+import { FC } from "react";
 
-type TrendingProps = { children: React.ReactNode }
+type TrendingProps = { children: React.ReactNode };
 
-const Trending: FC<TrendingProps> = ({children}) => {
+const Trending: FC<TrendingProps> = ({ children }) => {
   return (
-    
-      <ul className="w-full overflow-x-auto no-scrollbar flex gap-6 mt-6">{children}</ul>
-  
-  )
-}
-export default Trending
+    <div className="w-full overflow-x-scroll no-scrollbar mt-6">
+      <ul className="carousel flex gap-6 animate-slide">{children}</ul>
+    </div>
+  );
+};
+export default Trending;

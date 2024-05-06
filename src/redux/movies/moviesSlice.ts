@@ -1,10 +1,21 @@
-import { ItemData } from "@/types";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export interface MovieState {
+type MovieData = {
+  id: number;
+  media_type: string;
+  backdrop_path: string;
+  release_date: string;
+  first_air_date: string;
+  adult: boolean;
+  title: string;
+  name: string;
+};
+
+interface MovieState {
   loading?: boolean;
-  movies?: ItemData[];
+  movies?: MovieData[];
   error: string | undefined;
 }
 

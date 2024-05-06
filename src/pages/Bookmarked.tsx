@@ -1,13 +1,15 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import GridLayout from "@/components/layout/GridLayout";
 import PageLayout from "@/components/layout/PageLayout";
 import Heading from "@/components/ui/Heading";
 import ItemCard from "@/components/ui/ItemCard";
-import { ItemData, fetchBookmark } from "@/redux/bookmarked/bookmarkSlice";
+import { fetchBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch, RootState } from "@/redux/store";
-import { useEffect } from "react";
+import Loading from "@/components/ui/Loading";
 
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+
 
 const Favorites = () => {
   const { loading, bookmarks, error } = useSelector(
@@ -20,26 +22,26 @@ const Favorites = () => {
 
   useEffect(() => {
     dispatch(fetchBookmark());
-  }, []);
+  }, [dispatch]);
 
   return (
     <PageLayout>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {!loading && error ? <p>error</p> : null}
       <section>
         <Heading as="h2">Bookmarked Movies</Heading>
         {!loading && movies && movies?.length !== 0 ? (
           <GridLayout>
-            {movies?.map((movie: Partial<ItemData>) => (
-              <NavLink to={`/movie/${movie.id}`} key={movie.id}>
-                <ItemCard
-                  imgSrc={movie.backdrop_path}
-                  releaseDate={movie.release_date?.substring(0, 4)}
-                  mediaType="movie"
-                  ratings={movie.adult ? "18+" : "PG"}
-                  title={movie.title}
-                />
-              </NavLink>
+            {movies?.map((movie) => (
+              <ItemCard
+                key={movie.id}
+                id={movie.id}
+                imgSrc={movie.backdrop_path}
+                releaseDate={movie.release_date?.substring(0, 4)}
+                media_type="movie"
+                ratings={movie.adult ? "18+" : "PG"}
+                title={movie.title}
+              />
             ))}
           </GridLayout>
         ) : (
@@ -50,16 +52,16 @@ const Favorites = () => {
         <Heading as="h2">Bookmarked TV Shows</Heading>
         {!loading && tvShows && tvShows?.length !== 0 ? (
           <GridLayout>
-            {tvShows?.map((tvShow: Partial<ItemData>) => (
-              <NavLink to={`/tv/${tvShow.id}`} key={tvShow.id}>
-                <ItemCard
-                  imgSrc={tvShow.backdrop_path}
-                  releaseDate={tvShow.first_air_date?.substring(0, 4)}
-                  mediaType="tv"
-                  ratings={tvShow.adult ? "18+" : "PG"}
-                  title={tvShow.name}
-                />
-              </NavLink>
+            {tvShows?.map((tvShow) => (
+              <ItemCard
+                key={tvShow.id}
+                id={tvShow.id}
+                imgSrc={tvShow.backdrop_path}
+                releaseDate={tvShow.first_air_date?.substring(0, 4)}
+                media_type="tv"
+                ratings={tvShow.adult ? "18+" : "PG"}
+                title={tvShow.name}
+              />
             ))}
           </GridLayout>
         ) : (

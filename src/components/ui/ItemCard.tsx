@@ -1,44 +1,64 @@
 import { FC } from "react";
+import { NavLink } from "react-router-dom";
+
 import Heading from "./Heading";
 import Text from "./Text";
+import BookMark from "./BookMark";
 
 type ItemCardProps = {
-  imgSrc: string | undefined;
-  releaseDate: string | undefined;
-  mediaType: string | undefined;
-  ratings: string | undefined;
-  title: string | undefined;
+  id?: number;
+  imgSrc: string;
+  releaseDate: string;
+  media_type: string;
+  ratings: string;
+  title: string;
 };
 
 const ItemCard: FC<ItemCardProps> = ({
+  id,
   imgSrc,
   releaseDate,
-  mediaType,
+  media_type,
   ratings,
   title,
 }) => {
-  const imageSrc =
-    imgSrc === null ? null : `https://image.tmdb.org/t/p/original/${imgSrc}`;
+  const imageSrc = `https://image.tmdb.org/t/p/original/${imgSrc}`;
+  const nullImageSrc = "https://image.tmdb.org/t/p/original/null";
+
   return (
     <li>
-      <div className="item-image w-full">
-        <img
-          className="w-full rounded-lg"
-          src={imageSrc || "/src/assets/images/default-poster.png"}
-          alt={`${title} poster`}
+      <div className="relative z-10 w-full">
+        <BookMark
+          id={id}
+          media_type={media_type}
+          className="absolute right-3 top-3 z-10"
         />
+        <NavLink
+          to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}
+          key={id}
+        >
+          <img
+            className="w-full rounded-lg"
+            src={
+              imageSrc === nullImageSrc
+                ? "/src/assets/images/default-poster.png"
+                : imageSrc
+            }
+            alt={`${title} poster`}
+          />
+        </NavLink>
       </div>
       <div className="mt-2">
         <div className="flex gap-2">
           <Text>{releaseDate}</Text>
           <span>•</span>
-          <div className="media-type flex items-center gap-1">
+          <div className="flex items-center gap-1">
             <img
               className="w-3 h-3"
-              src={`/src/assets/icons/icon-category-${mediaType}.svg`}
-              alt={`${mediaType} icon`}
+              src={`/src/assets/icons/icon-category-${media_type}.svg`}
+              alt={`${media_type} icon`}
             />
-            <Text>{mediaType}</Text>
+            <Text>{media_type}</Text>
           </div>
           <span>•</span>
           <Text>{ratings}</Text>

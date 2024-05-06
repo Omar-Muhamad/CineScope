@@ -12,8 +12,8 @@ type DetailsHeaderProps = {
   id: number;
   title: string;
   rating: number;
-  releaseDate: string;
-  mediaType: string;
+  release_date: string;
+  media_type: string;
   imageSrc: string;
   genres: {
     id: number;
@@ -28,8 +28,8 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
   posterUrl,
   title,
   rating,
-  releaseDate,
-  mediaType,
+  release_date,
+  media_type,
   genres,
   imageSrc,
   overview,
@@ -58,7 +58,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
   return (
     <>
-      <section className="relative w-full h-[25vh] md:h-[50vh]">
+      <section className="relative w-full h-[25vh] md:h-[500px]">
         <div
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${imageSrc})`,
@@ -75,7 +75,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
             />
           </div>
 
-          <div className="h-full -mt-5 md:mt-0 grow">
+          <div className="h-full md:mt-5 grow">
             <Heading as="h1">{title}</Heading>
 
             <div className="flex gap-2">
@@ -88,21 +88,21 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
             </div>
 
             <div className="flex gap-2">
-              <Text>{releaseDate}</Text>
+              <Text>{release_date}</Text>
               <span>•</span>
               <div className="media-type flex items-center gap-1">
                 <img
                   className="w-3 h-3"
-                  src={`/src/assets/icons/icon-category-${mediaType}.svg`}
-                  alt={`${mediaType} icon`}
+                  src={`/src/assets/icons/icon-category-${media_type}.svg`}
+                  alt={`${media_type} icon`}
                 />
-                <Text>{mediaType}</Text>
+                <Text>{media_type}</Text>
               </div>
             </div>
 
             <div className="mt-2 flex gap-2">
               <PercentageCircle rating={rating * 10} />
-              <BookMark id={id} media_type={mediaType}/>
+              <BookMark id={id} media_type={media_type} />
               <TrailerButton onClick={handlePlayTrailer} />
             </div>
 

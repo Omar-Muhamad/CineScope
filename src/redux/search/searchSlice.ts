@@ -1,10 +1,21 @@
-import { ItemData } from "@/types";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export type SearchData = {
+  id: number;
+  media_type: string;
+  backdrop_path: string;
+  release_date: string;
+  first_air_date: string;
+  adult: boolean;
+  title: string;
+  name: string;
+};
+
 export interface DataState {
   loading?: boolean;
-  searchData?: ItemData[];
+  searchData?: SearchData[];
   error: string | undefined;
 }
 

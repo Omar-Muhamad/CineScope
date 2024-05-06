@@ -1,5 +1,6 @@
-import Button from "../ui/Button";
 import { IoPlayCircleOutline } from "react-icons/io5";
+
+import Button from "../ui/Button";
 
 const TrailerButton = ({ onClick }: { onClick: () => void }) => {
   return (

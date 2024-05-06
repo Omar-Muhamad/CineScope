@@ -4,9 +4,10 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Tv from "./pages/Tv";
 import Details from "./pages/Details";
-import Favorites from "./pages/Favorites";
+import Bookmarked from "./pages/Bookmarked";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import RequireAuth from "./components/common/RequireAuth";
 
 function App() {
   const { pathname } = useLocation();
@@ -21,8 +22,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/tv" element={<Tv />} />
-        <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/:media_type/:id" element={<Details />} />
+        <Route
+          path="/bookmarked"
+          element={
+            <RequireAuth>
+              <Bookmarked />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

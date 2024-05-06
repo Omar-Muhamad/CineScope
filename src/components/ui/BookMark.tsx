@@ -1,15 +1,24 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { IoBookmark, IoBookmarkOutline  } from "react-icons/io5";
+
 import { addBookmark, removeBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch } from "@/redux/store";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { HiOutlineBookmark, HiBookmark } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
 
-const BookMark = ({ id, media_type }: { id: number; media_type: string }) => {
+const BookMark = ({
+  id,
+  media_type,
+  className,
+}: {
+  id: number | undefined;
+  media_type: string | undefined;
+  className?: string;
+}) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
-  const checkBookmarked = async ({ id }: { id: number }) => {
+  const checkBookmarked = async ({ id }: { id: number | undefined }) => {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,
     };
@@ -25,13 +34,13 @@ const BookMark = ({ id, media_type }: { id: number; media_type: string }) => {
     return response.data.item_present;
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const session_id = localStorage.getItem("session_id");
     if (isBookmarked) {
-      dispatch(removeBookmark({ id, media_type, session_id }));
+      await dispatch(removeBookmark({ id, media_type, session_id }));
       setIsBookmarked(false);
     } else {
-      dispatch(addBookmark({ id, media_type, session_id }));
+      await dispatch(addBookmark({ id, media_type, session_id }));
       setIsBookmarked(true);
     }
   };
@@ -45,12 +54,12 @@ const BookMark = ({ id, media_type }: { id: number; media_type: string }) => {
   return (
     <button
       onClick={handleClick}
-      className="group w-10 h-10 rounded-full bg-[#00000050] hover:bg-white hover:opacity-100 flex justify-center items-center"
+      className={`group w-8 h-8 rounded-full bg-[#00000050] hover:bg-white hover:opacity-100 flex justify-center items-center ${className}`}
     >
       {isBookmarked ? (
-        <HiBookmark className="text-2xl text-white group-hover:text-black" />
+        <IoBookmark className="text-xl text-white group-hover:text-black" />
       ) : (
-        <HiOutlineBookmark className="text-2xl text-white group-hover:text-black" />
+        <IoBookmarkOutline className="text-xl text-white group-hover:text-black" />
       )}
     </button>
   );

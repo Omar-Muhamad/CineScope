@@ -1,11 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ItemData } from "@/types";
 
-export interface DataState {
+
+type HomeData = {
+  id: number;
+  media_type: string;
+  backdrop_path: string;
+  release_date: string;
+  first_air_date: string;
+  adult: boolean;
+  title: string;
+  name: string;
+};
+
+interface DataState {
   loading?: boolean;
-  trending?: ItemData[];
-  recommendations?: ItemData[];
+  trending?: HomeData[];
+  recommendations?: HomeData[];
   error: string | undefined;
 }
 
@@ -37,13 +48,13 @@ export const fetchTrending = createAsyncThunk(
 
 export const fetchRecommendations = createAsyncThunk(
   "data/fetchRecommendations",
-  async ({ id }: { id: string }) => {
+  async ({ id, media_type }: { id: string ; media_type: string | undefined}) => {
     try {
       const params = {
         api_key: import.meta.env.VITE_APP_API_KEY,
       };
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/recommendations`,
+        `https://api.themoviedb.org/3/${media_type}/${id}/recommendations`,
         { params }
       );
       return response.data.results;

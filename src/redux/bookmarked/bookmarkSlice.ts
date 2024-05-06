@@ -1,16 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export type ItemData = {
+type ItemData = {
   id: number;
-  mediaType: string;
-  releaseDate: string;
+  media_type: string;
+  release_date: string;
   title: string;
-  imageSrc: string;
+  backdrop_path: string;
   ratings: string;
+  adult: boolean;
+  first_air_date: string;
+  name: string;
 };
 
-export type BookmarkData = ItemData[];
+type BookmarkData = ItemData[];
 
 export interface BookmarkState {
   loading: boolean;
@@ -37,14 +40,21 @@ export const fetchBookmark = createAsyncThunk(
     });
 
     const data = response.data.items;
-    console.log(data);
     return data;
   }
 );
 
 export const addBookmark = createAsyncThunk(
   "bookmark/addBookmark",
-  async ({ id, media_type, session_id }: { id: number; media_type: string; session_id: string | null }) => {
+  async ({
+    id,
+    media_type,
+    session_id,
+  }: {
+    id: number | undefined;
+    media_type: string | undefined;
+    session_id: string | null;
+  }) => {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,
       session_id,
@@ -64,7 +74,15 @@ export const addBookmark = createAsyncThunk(
 
 export const removeBookmark = createAsyncThunk(
   "bookmark/removeBookmark",
-  async ({ id, media_type, session_id }: { id: number; media_type: string; session_id: string | null }) => {
+  async ({
+    id,
+    media_type,
+    session_id,
+  }: {
+    id: number | undefined;
+    media_type: string | undefined;
+    session_id: string | null;
+  }) => {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,
       session_id,

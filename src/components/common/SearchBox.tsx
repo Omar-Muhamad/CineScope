@@ -1,11 +1,9 @@
-
-import { ChangeEvent, FC, KeyboardEvent } from "react";
+import { ChangeEvent, FC, KeyboardEvent, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const SearchBox: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams("");
-  console.log(searchParams);
-  
+
   const handleSearch = (
     event: KeyboardEvent<HTMLInputElement> & ChangeEvent<HTMLInputElement>
   ) => {
@@ -16,6 +14,8 @@ const SearchBox: FC = () => {
       setSearchParams(newSearchParams, { replace: true });
     }
   };
+
+  useEffect(() => {}, [searchParams]);
 
   return (
     <div className="w-full flex gap-6 items-start mt-5 pr-6 ">

@@ -1,12 +1,36 @@
-import { ItemData } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { fetchRecommendations } from "../home/homeSlice";
 
-export interface DataState {
+type DetailsData = {
+  id: number;
+  backdrop_path: string;
+  release_date: string;
+  first_air_date: string;
+  adult: boolean;
+  title: string;
+  name: string;
+  poster_path: string;
+  genres: { id: number; name: string }[];
+  vote_average: number;
+  overview: string;
+};
+
+type RecommendationsData = {
+  id: number;
+  media_type: string;
+  backdrop_path: string;
+  release_date: string;
+  first_air_date: string;
+  adult: boolean;
+  title: string;
+  name: string;
+};
+
+interface DataState {
   loading?: boolean;
-  details?: ItemData[];
-  recommendations?: ItemData[];
+  details?: DetailsData;
+  recommendations?: RecommendationsData[];
   error: string | undefined;
 }
 
@@ -14,19 +38,19 @@ type Param = string | undefined;
 
 const initialState: DataState = {
   loading: false,
-  details: [],
+  details: undefined,
   error: undefined,
 };
 
 export const fetchDetails = createAsyncThunk(
   "data/fetchDetails",
-  async ({ mediaType, id }: { mediaType: Param; id: Param }) => {
+  async ({ media_type, id }: { media_type: Param; id: Param }) => {
     try {
       const params = {
         api_key: import.meta.env.VITE_APP_API_KEY,
       };
       const response = await axios.get(
-        `https://api.themoviedb.org/3/${mediaType}/${id}`,
+        `https://api.themoviedb.org/3/${media_type}/${id}`,
         { params }
       );
       return response.data;

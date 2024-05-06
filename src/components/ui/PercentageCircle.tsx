@@ -6,20 +6,20 @@ const PercentageCircle = ({ rating }: { rating: number }) => {
           {/* <!-- Background circle --> */}
           <circle
             className="text-[#00000040] stroke-current"
-            strokeWidth="10"
-            cx="50"
-            cy="50"
-            r="40"
+            strokeWidth={10}
+            cx={50}
+            cy={50}
+            r={40}
             fill="transparent"
           ></circle>
           {/* <!-- Progress circle --> */}
           <circle
             className="text-orange  progress-ring__circle stroke-current"
-            strokeWidth="10"
+            strokeWidth={10}
             strokeLinecap="round"
-            cx="50"
-            cy="50"
-            r="40"
+            cx={50}
+            cy={50}
+            r={40}
             fill="transparent"
             strokeDasharray="251.2"
             strokeDashoffset={`calc(251.2 - (251.2 * ${rating}) / 100)`}
@@ -27,15 +27,15 @@ const PercentageCircle = ({ rating }: { rating: number }) => {
 
           {/* <!-- Center text --> */}
           <text
-            x="50"
-            y="53"
+            x={50}
+            y={53}
             fontFamily="Verdana"
-            fontSize="26"
+            fontSize={26}
             textAnchor="middle"
             alignmentBaseline="middle"
             className="fill-white"
           >
-            {rating/10}
+            {rating.toFixed(0)}
           </text>
         </svg>
       </div>

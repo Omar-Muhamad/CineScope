@@ -15,7 +15,16 @@ export default {
       fontFamily :{ 
         outfitLight: ["outfit-light","sans-serif"], 
         outfitMedium: ["outfit-medium","sans-serif"], 
-      } 
+      },
+      animation: {
+        slide: "slideRight 25s infinite linear",
+      },
+      keyframes: {
+        slideRight: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
     },
   },
   plugins: [],
