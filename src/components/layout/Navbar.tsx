@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import NavIcon from "../ui/NavIcon";
-import Logo  from "@/assets/icons/logo.svg";
+import Logo from "@/assets/icons/logo.svg";
 import { getUserDetails } from "@/redux/user/userSlice";
 import UserCard from "../ui/UserCard";
 
@@ -36,7 +36,6 @@ const Navbar: FC = () => {
   }, [dispatch]);
 
   return (
-    
     <nav className="relative flex md:flex-col justify-between items-center md:m-6 p-6 md:px-5 bg-secondary-dark md:rounded-2xl">
       <NavLink to="/" className="h-7 w-7 md:h-8 md:w-8">
         <Logo />
@@ -52,7 +51,7 @@ const Navbar: FC = () => {
           src={
             isLogged
               ? `https://gravatar.com/avatar/${user?.gravatar}`
-              : "/src/assets/icons/user.png"
+              : "/assets/icons/user.png"
           }
           alt="User logo"
         />

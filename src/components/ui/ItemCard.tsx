@@ -44,7 +44,7 @@ const ItemCard: FC<ItemCardProps> = ({
             max-width="500px"
             src={
               imageSrc === nullImageSrc
-                ? "/src/assets/images/default-poster.png"
+                ? "/assets/images/default-poster.png"
                 : imageSrc
             }
             alt={`${title} poster`}
@@ -58,7 +58,7 @@ const ItemCard: FC<ItemCardProps> = ({
           <div className="flex items-center gap-1">
             <img
               className="w-3 h-3"
-              src={`/src/assets/icons/icon-category-${media_type}.svg`}
+              src={`/assets/icons/icon-category-${media_type}.svg`}
               alt={`${media_type} icon`}
             />
             <Text>{media_type}</Text>

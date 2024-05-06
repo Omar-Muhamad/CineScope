@@ -47,7 +47,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <div className="media-type flex items-center gap-1">
             <img
               className="w-3 h-3"
-              src={`/src/assets/icons/icon-category-${mediaType}.svg`}
+              src={`/assets/icons/icon-category-${mediaType}.svg`}
               alt={`${mediaType} icon`}
             />
             <Text>{mediaType}</Text>

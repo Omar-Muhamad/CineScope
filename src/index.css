@@ -12,13 +12,13 @@
   box-sizing: border-box;
 }
 
-@font-face { 
-  font-family: "outfit-light"; 
-  src: url("/src/assets/fonts/Outfit-Light.ttf"); 
-} 
-@font-face { 
-  font-family: "outfit-medium"; 
-  src: url("/src/assets/fonts/Outfit-Medium.ttf"); 
+@font-face {
+  font-family: "outfit-light";
+  src: url("/assets/fonts/Outfit-Light.ttf");
+}
+@font-face {
+  font-family: "outfit-medium";
+  src: url("/assets/fonts/Outfit-Medium.ttf");
 }
 
 body {
@@ -53,6 +53,6 @@ nav {
   transform-origin: 50% 50%;
 }
 
-.carousel:hover{
+.carousel:hover {
   animation-play-state: paused;
 }

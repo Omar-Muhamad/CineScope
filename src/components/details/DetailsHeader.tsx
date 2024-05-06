@@ -93,7 +93,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
               <div className="media-type flex items-center gap-1">
                 <img
                   className="w-3 h-3"
-                  src={`/src/assets/icons/icon-category-${media_type}.svg`}
+                  src={`/assets/icons/icon-category-${media_type}.svg`}
                   alt={`${media_type} icon`}
                 />
                 <Text>{media_type}</Text>

@@ -22,7 +22,7 @@ const SearchBox: FC = () => {
       <div className="w-9 h-9 md:w-10 md:h-10">
         <img
           className="w-full h-full"
-          src="/src/assets/icons/icon-nav-search.svg"
+          src="/assets/icons/icon-nav-search.svg"
           alt="Search icon"
         />
       </div>
