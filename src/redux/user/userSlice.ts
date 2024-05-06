@@ -136,7 +136,11 @@ const userSlice = createSlice({
       })
       .addCase(getUserDetails.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        if (typeof action.payload === 'object' && action.payload !== null) {
+          state.user = action.payload as UserData;
+        } else {
+          state.user = null;
+        }
       })
       .addCase(getUserDetails.rejected, (state, action) => {
         state.loading = false;

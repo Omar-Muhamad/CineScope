@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { FC, Suspense, useEffect } from "react";
+import { FC, useEffect } from "react";
 
 import PageLayout from "@/components/layout/PageLayout";
 import GridLayout from "@/components/layout/GridLayout";
