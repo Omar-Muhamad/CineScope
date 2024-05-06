@@ -27,7 +27,7 @@ const ItemCard: FC<ItemCardProps> = ({
 
   return (
     <li>
-      <div className="relative z-10 w-full">
+      <div className="relative w-full">
         <BookMark
           id={id}
           media_type={media_type}
@@ -39,6 +39,9 @@ const ItemCard: FC<ItemCardProps> = ({
         >
           <img
             className="w-full rounded-lg"
+            loading="lazy"
+            decoding="async"
+            max-width="500px"
             src={
               imageSrc === nullImageSrc
                 ? "/src/assets/images/default-poster.png"

@@ -38,10 +38,10 @@ const BookMark = ({
     const session_id = localStorage.getItem("session_id");
     if (isBookmarked) {
       await dispatch(removeBookmark({ id, media_type, session_id }));
-      setIsBookmarked(false);
+      await setIsBookmarked(false);
     } else {
       await dispatch(addBookmark({ id, media_type, session_id }));
-      setIsBookmarked(true);
+      await setIsBookmarked(true);
     }
   };
 
