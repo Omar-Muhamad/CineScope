@@ -50,7 +50,7 @@ const Home: FC = () => {
                         ? item.release_date?.substring(0, 4)
                         : item.first_air_date?.substring(0, 4)
                     }
-                    mediaType={movie ? item.media_type : "tv"}
+                    media_type={movie ? item.media_type : "tv"}
                     ratings={item.adult ? "18+" : "PG"}
                     title={movie ? item.title : item.name}
                   />

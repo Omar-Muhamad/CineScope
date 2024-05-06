@@ -4,6 +4,7 @@ import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { IoBookmark } from "react-icons/io5";
 import { RiFilmFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import NavIcon from "../ui/NavIcon";
@@ -46,15 +47,15 @@ const Navbar: FC = () => {
         ))}
       </div>
       <button className="h-10 w-10" onClick={handleClick}>
-        <img
-          className="h-full w-full rounded-full border-2 border-transparent hover:border-orange"
-          src={
-            isLogged
-              ? `https://gravatar.com/avatar/${user?.gravatar}`
-              : "/assets/icons/user.png"
-          }
-          alt="User logo"
-        />
+        {isLogged ? (
+          <img
+            className="h-full w-full rounded-full border-2 border-transparent hover:border-orange"
+            src={`https://gravatar.com/avatar/${user?.gravatar}`}
+            alt="User logo"
+          />
+        ) : (
+          <FaUserCircle className="h-full w-full border-2 rounded-full border-transparent hover:border-orange" />
+        )}
       </button>
       {isUserIconClicked && <UserCard user={user} isLogged={isLogged} />}
     </nav>

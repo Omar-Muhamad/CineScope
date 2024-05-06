@@ -7,6 +7,8 @@ import Heading from "../ui/Heading";
 import PercentageCircle from "../ui/PercentageCircle";
 import BookMark from "../ui/BookMark";
 import TrailerButton from "./TrailerButton";
+import { PiTelevisionSimpleFill } from "react-icons/pi";
+import { RiFilmFill } from "react-icons/ri";
 
 type DetailsHeaderProps = {
   id: number;
@@ -91,11 +93,11 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
               <Text>{release_date}</Text>
               <span>•</span>
               <div className="media-type flex items-center gap-1">
-                <img
-                  className="w-3 h-3"
-                  src={`/assets/icons/icon-category-${media_type}.svg`}
-                  alt={`${media_type} icon`}
-                />
+                {media_type === "movie" ? (
+                  <RiFilmFill className="text-md" />
+                ) : (
+                  <PiTelevisionSimpleFill className="text-md" />
+                )}
                 <Text>{media_type}</Text>
               </div>
             </div>

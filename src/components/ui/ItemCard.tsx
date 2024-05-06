@@ -1,5 +1,8 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
+import { RiFilmFill } from "react-icons/ri";
+import { PiTelevisionSimpleFill } from "react-icons/pi";
+import poster from "@/assets/images/default-poster.png";
 
 import Heading from "./Heading";
 import Text from "./Text";
@@ -44,7 +47,7 @@ const ItemCard: FC<ItemCardProps> = ({
             max-width="500px"
             src={
               imageSrc === nullImageSrc
-                ? "/assets/images/default-poster.png"
+                ? poster
                 : imageSrc
             }
             alt={`${title} poster`}
@@ -56,11 +59,11 @@ const ItemCard: FC<ItemCardProps> = ({
           <Text>{releaseDate}</Text>
           <span>•</span>
           <div className="flex items-center gap-1">
-            <img
-              className="w-3 h-3"
-              src={`/assets/icons/icon-category-${media_type}.svg`}
-              alt={`${media_type} icon`}
-            />
+            {media_type === "movie" ? (
+              <RiFilmFill className="text-md" />
+            ) : (
+              <PiTelevisionSimpleFill className="text-md" />
+            )}
             <Text>{media_type}</Text>
           </div>
           <span>•</span>
