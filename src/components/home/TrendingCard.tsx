@@ -2,7 +2,6 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import Text from "../ui/Text";
-import Heading from "../ui/Heading";
 import BookMark from "../ui/BookMark";
 import { RiFilmFill } from "react-icons/ri";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
