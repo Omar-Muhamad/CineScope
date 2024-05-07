@@ -2,6 +2,7 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { RiFilmFill } from "react-icons/ri";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
+import poster from "@/assets/images/default-poster.png";
 
 import Heading from "./Heading";
 import Text from "./Text";
@@ -25,7 +26,9 @@ const ItemCard: FC<ItemCardProps> = ({
   title,
 }) => {
   const imageSrc = `https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`;
-  const nullImageSrc = "https://image.tmdb.org/t/p/original/null";
+  const nullImageSrc = "https://image.tmdb.org/t/p/w533_and_h300_bestv2/null";
+
+  console.log(poster);
 
   return (
     <li>
@@ -40,13 +43,13 @@ const ItemCard: FC<ItemCardProps> = ({
           key={id}
         >
           <img
-            className="w-full rounded-lg"
+            className="w-full rounded-lg aspect-[16/9]"
             loading="lazy"
             decoding="async"
             max-width="500px"
             src={
               imageSrc === nullImageSrc
-                ? "assets/images/default-poster.png"
+                ? poster
                 : imageSrc
             }
             alt={`${title} poster`}
