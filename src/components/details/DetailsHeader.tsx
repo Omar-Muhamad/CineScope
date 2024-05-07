@@ -72,6 +72,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           <div className="h-full hidden md:block">
             <img
               className="h-full rounded-xl"
+              loading="eager"
               src={`https://image.tmdb.org/t/p/w300/${posterUrl}`}
               alt={`${title} poster`}
             />
