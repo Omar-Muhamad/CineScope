@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 import { AppDispatch, RootState } from "@/redux/store";
 import { userLogin } from "@/redux/user/userSlice";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Text from "@/components/ui/Text";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isLogged, setIsLogged] = useState(false);

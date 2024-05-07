@@ -37,7 +37,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <img
             className="w-full rounded-lg"
             loading="eager"
-            src={`https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`}
+            src={`https://image.tmdb.org/t/p/w1280/${imgSrc}`}
             alt={`${title} poster`}
           />
         </NavLink>
