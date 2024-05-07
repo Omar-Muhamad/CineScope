@@ -2,7 +2,6 @@ import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { RiFilmFill } from "react-icons/ri";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
-import poster from "@/assets/images/default-poster.png";
 
 import Heading from "./Heading";
 import Text from "./Text";
@@ -47,7 +46,7 @@ const ItemCard: FC<ItemCardProps> = ({
             max-width="500px"
             src={
               imageSrc === nullImageSrc
-                ? poster
+                ? "assets/images/default-poster.png"
                 : imageSrc
             }
             alt={`${title} poster`}
