@@ -5,6 +5,7 @@ import { DataState, SearchData } from "@/redux/search/searchSlice";
 import ItemCard from "../ui/ItemCard";
 import GridLayout from "../layout/GridLayout";
 import Heading from "../ui/Heading";
+import Loading from "../ui/Loading";
 
 type SearchResultsProps = {
   data: DataState;
@@ -17,7 +18,7 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   return (
     <main>
       <Heading as="h1">Search Results</Heading>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {!loading && error ? <p>error</p> : null}
       <section>
         <Heading as="h2">Movies</Heading>

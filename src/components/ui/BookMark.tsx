@@ -52,16 +52,16 @@ const BookMark = ({
   }, [isBookmarked, id]);
 
   return (
-    <button
+    <div
       onClick={handleClick}
-      className={`group w-8 h-8 rounded-full bg-[#00000070] hover:bg-white hover:opacity-100 flex justify-center items-center ${className}`}
+      className={`group w-8 h-8 rounded-full bg-[#00000070] hover:bg-white hover:opacity-100 flex justify-center items-center cursor-pointer ${className}`}
     >
       {isBookmarked ? (
         <IoBookmark className="text-xl text-white group-hover:text-black" />
       ) : (
         <IoBookmarkOutline className="text-xl text-white group-hover:text-black" />
       )}
-    </button>
+    </div>
   );
 };
 export default BookMark;

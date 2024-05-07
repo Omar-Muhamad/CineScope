@@ -38,20 +38,13 @@ const ItemCard: FC<ItemCardProps> = ({
           media_type={media_type}
           className="absolute right-3 top-3 z-10"
         />
-        <NavLink
-          to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}
-          key={id}
-        >
+        <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
           <img
-            className="w-full rounded-lg aspect-[16/9]"
+            className="w-full rounded-lg aspect-[16/9] object-cover"
             loading="lazy"
             decoding="async"
             max-width="500px"
-            src={
-              imageSrc === nullImageSrc
-                ? poster
-                : imageSrc
-            }
+            src={imageSrc === nullImageSrc ? poster : imageSrc}
             alt={`${title} poster`}
           />
         </NavLink>
@@ -71,9 +64,11 @@ const ItemCard: FC<ItemCardProps> = ({
           <span>•</span>
           <Text>{ratings}</Text>
         </div>
-        <Heading as="h3" size="sm">
-          {title}
-        </Heading>
+        <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
+          <Heading as="h3" size="sm">
+            {title}
+          </Heading>
+        </NavLink>
       </div>
     </li>
   );

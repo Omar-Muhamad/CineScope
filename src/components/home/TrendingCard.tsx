@@ -33,7 +33,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           media_type={media_type}
           className="absolute right-4 top-4"
         />
-        <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`} key={id}>
+        <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`}>
           <img
             className="w-full rounded-lg"
             loading="eager"
@@ -48,7 +48,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <Text>{releaseDate}</Text>
           <span>•</span>
           <div className="media-type flex items-center gap-1">
-          {media_type === "movie" ? (
+            {media_type === "movie" ? (
               <RiFilmFill className="text-md" />
             ) : (
               <PiTelevisionSimpleFill className="text-md" />
@@ -58,9 +58,11 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <span>•</span>
           <Text>{ratings}</Text>
         </div>
-        <Heading as="h3" size="md">
-          {title}
-        </Heading>
+        <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`} key={id}>
+          <Heading as="h3" size="md">
+            {title}
+          </Heading>
+        </NavLink>
       </div>
     </li>
   );

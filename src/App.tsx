@@ -12,7 +12,7 @@ import RequireAuth from "./components/common/RequireAuth";
 function App() {
   const { pathname } = useLocation();
   return (
-    <div className="font-outfitLight min-h-screen w-full max-w-[1920px] flex bg-main-dark text-white flex-col md:flex-row md:mx-auto relative">
+    <div className="font-outfitLight min-h-screen w-full  flex bg-main-dark text-white flex-col md:flex-row md:mx-auto relative">
       {pathname !== "/login" && (
         <header className="md:h-[100svh] md:fixed z-50">
           <Navbar />
