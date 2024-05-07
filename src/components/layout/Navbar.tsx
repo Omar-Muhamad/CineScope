@@ -13,9 +13,9 @@ import { getUserDetails } from "@/redux/user/userSlice";
 import UserCard from "../ui/UserCard";
 
 const navLinks = [
-  { id: 1, title: "movies", path: "/movies", icon: RiFilmFill },
-  { id: 2, title: "tv", path: "/tv", icon: PiTelevisionSimpleFill },
-  { id: 3, title: "bookmarked", path: "/bookmarked", icon: IoBookmark },
+  { id: 1, title: "movies", path: "/movies", icon: RiFilmFill, areaLabel: "link to movies page" },
+  { id: 2, title: "tv", path: "/tv", icon: PiTelevisionSimpleFill, areaLabel: "link to tv page"},
+  { id: 3, title: "bookmarked", path: "/bookmarked", icon: IoBookmark, areaLabel: "link to bookmarked page"},
 ];
 
 const Navbar: FC = () => {
@@ -38,7 +38,7 @@ const Navbar: FC = () => {
 
   return (
     <nav className="relative flex md:flex-col justify-between items-center md:m-6 p-6 md:px-5 bg-secondary-dark md:rounded-2xl">
-      <NavLink to="/" className="h-7 w-7 md:h-8 md:w-8">
+      <NavLink to="/" aria-label="link to main page" className="h-7 w-7 md:h-8 md:w-8">
         <Logo />
       </NavLink>
       <div className="nav-links md:-mt-72 flex md:flex-col items-center gap-6">

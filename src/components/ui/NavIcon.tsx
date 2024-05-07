@@ -8,14 +8,15 @@ type NavIconProps = {
     path: string;
     title: string;
     icon: IconType;
+    areaLabel: string;
   };
 };
 
 const NavIcon: FC<NavIconProps> = ({ link }) => {
-  const { path, icon } = link;
+  const { path, icon, areaLabel } = link;
   const Icon = icon;
   return (
-    <NavLink className="text-2xl text-gray hover:text-white aria-[current=page]:text-white" to={path}>
+    <NavLink to={path} className="text-2xl text-gray hover:text-white aria-[current=page]:text-white" area-label={areaLabel} aria-current="page">
       <Icon />
     </NavLink>
   );
