@@ -59,9 +59,9 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <Text>{ratings}</Text>
         </div>
         <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`} key={id}>
-          <Heading as="h3" size="md">
+          <h2 className="font-outfitMedium text-2xl">
             {title}
-          </Heading>
+          </h2>
         </NavLink>
       </div>
     </li>

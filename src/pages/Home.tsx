@@ -60,7 +60,7 @@ const Home: FC = () => {
           : null}
       </Trending>
 
-      <section className="w-full">
+      <div className="w-full">
         <Heading as="h2">Recommendations</Heading>
         <GridLayout>
           {!loading && error ? <p>error</p> : null}
@@ -85,7 +85,7 @@ const Home: FC = () => {
               })
             : null}
         </GridLayout>
-      </section>
+      </div>
     </PageLayout>
   );
 };

@@ -16,7 +16,7 @@ const NavIcon: FC<NavIconProps> = ({ link }) => {
   const Icon = icon;
   return (
     <NavLink to={path} className="text-2xl text-gray hover:text-white aria-[current=page]:text-white" area-label={`${title} page`}>
-      <Icon />
+      <Icon area-label={`${title} page`}/>
     </NavLink>
   );
 };
