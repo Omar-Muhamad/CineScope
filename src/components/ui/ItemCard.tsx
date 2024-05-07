@@ -66,7 +66,7 @@ const ItemCard: FC<ItemCardProps> = ({
         </div>
         <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
           <Heading as="h3" size="sm">
-            {title}
+            {title.length >= 23 ?`${title.slice(0, 22)}...`: title}
           </Heading>
         </NavLink>
       </div>
