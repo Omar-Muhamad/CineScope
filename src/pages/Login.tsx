@@ -38,7 +38,7 @@ const Login = () => {
   }, [isLogged, session_id]);
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="w-screen h-screen px-6 md:px-0 flex justify-center items-center">
       {error && (
         <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center gap-6 rounded-xl">
           <Heading as="h1">{error}</Heading>

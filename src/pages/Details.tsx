@@ -9,10 +9,13 @@ import GridLayout from "@/components/layout/GridLayout";
 import { fetchRecommendations } from "@/redux/home/homeSlice";
 import ItemCard from "@/components/ui/ItemCard";
 import Heading from "@/components/ui/Heading";
+import Loading from "@/components/ui/Loading";
 
 const Details: FC = () => {
   const data = useSelector((state: RootState) => state.details);
   const dispatch = useDispatch<AppDispatch>();
+
+  const { loading, details, recommendations, error } = data;
   const { media_type, id } = useParams();
 
   useEffect(() => {
@@ -26,38 +29,34 @@ const Details: FC = () => {
   }, [dispatch, id, media_type]);
 
   return (
-    <main className="page-layout md:ml-32 md:pl-0">
+    <main className="page-layout pb-6 md:ml-32 md:pl-0">
+      {loading && <Loading />}
       <div className="">
-        {data.loading && <p>Loading...</p>}
-        {!data.loading && data.error ? <p>error</p> : null}
+        {!loading && error ? <p>error</p> : null}
 
-        {!data.loading && data.details ? (
+        {!loading && details ? (
           <DetailsHeader
-            id={data.details.id}
-            posterUrl={data.details.poster_path}
-            title={
-              media_type === "movie" ? data.details.title : data.details.name
-            }
-            imageSrc={data.details.backdrop_path}
+            id={details.id}
+            posterUrl={details.poster_path}
+            title={media_type === "movie" ? details.title : details.name}
+            imageSrc={details.backdrop_path}
             release_date={
               media_type === "movie"
-                ? data.details.release_date?.substring(0, 4)
-                : data.details.first_air_date?.substring(0, 4)
+                ? details.release_date?.substring(0, 4)
+                : details.first_air_date?.substring(0, 4)
             }
             media_type={media_type === "movie" ? "movie" : "tv"}
-            genres={data.details.genres}
-            rating={data.details.vote_average}
-            overview={data.details.overview}
+            genres={details.genres}
+            rating={details.vote_average}
+            overview={details.overview}
           />
         ) : null}
       </div>
       <section className="pl-6 md:pl-0">
         <Heading as="h2">Recommendations</Heading>
         <GridLayout>
-          {!data.loading &&
-          data.recommendations &&
-          data.recommendations.length !== 0
-            ? data.recommendations.map((item) => {
+          {!loading && recommendations && recommendations.length !== 0
+            ? recommendations.map((item) => {
                 const movie = item.media_type === "movie";
                 return (
                   <ItemCard

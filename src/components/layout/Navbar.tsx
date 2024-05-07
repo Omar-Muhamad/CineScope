@@ -49,12 +49,12 @@ const Navbar: FC = () => {
       <button className="h-10 w-10" onClick={handleClick}>
         {isLogged ? (
           <img
-            className="h-full w-full rounded-full border-2 border-transparent hover:border-orange"
+            className="h-full w-full rounded-full"
             src={`https://gravatar.com/avatar/${user?.gravatar}`}
             alt="User logo"
           />
         ) : (
-          <FaUserCircle className="h-full w-full border-2 rounded-full border-transparent hover:border-orange" />
+          <FaUserCircle className="h-full w-full rounded-full text-orange hover:text-white" />
         )}
       </button>
       {isUserIconClicked && <UserCard user={user} isLogged={isLogged} />}

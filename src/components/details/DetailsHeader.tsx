@@ -41,7 +41,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
   const handlePlayTrailer = async () => {
     try {
-      const url = await movieTrailer(title || "");
+      const url = await movieTrailer(title || "top 10 movies 2024");
       console.log(url);
       if (url !== null && url !== "") {
         const embedUrl = `https://youtube.com/embed/${url.split("v=")[1]}`;
@@ -60,7 +60,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
   return (
     <>
-      <section className="relative w-full h-[25vh] md:h-[500px]">
+      <section className="relative w-full h-[25vh] md:h-[450px]">
         <div
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${imageSrc})`,
@@ -121,13 +121,21 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
       </section>
       {trailerUrl === null ? (
         isModalOpened && (
-          <Heading as="h1" className="text-center">
-            Sorry, no trailer found
-          </Heading>
+          <div className="absolute z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
+            <button
+              className="absolute text-5xl right-10 top-10 hover:text-red-500 z-30"
+              onClick={handleCloseBtn}
+            >
+              <IoCloseCircleOutline />
+            </button>
+            <Heading as="h1" className="text-center">
+              Sorry, no trailer found
+            </Heading>
+          </div>
         )
       ) : (
-        <div className="absolute z-20 top-0 bottom-0 left-0 right-0 bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
-          <div className="relative w-[375px] h-[220px] md:w-[640px] md:h-[360px] lg:w-[854px] lg:h-[480px]">
+        <div className="absolute z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
+          <div className="relative w-[320px] h-[200px] md:w-[640px] md:h-[360px] lg:w-[854px] lg:h-[480px]">
             <button
               className="absolute text-4xl -right-10 -top-10 hover:text-red-500 z-30"
               onClick={handleCloseBtn}
