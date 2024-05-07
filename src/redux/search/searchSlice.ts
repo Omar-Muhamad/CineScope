@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export type SearchData = {
+export type SearchResult = {
   id: number;
   media_type: string;
   backdrop_path: string;
@@ -13,15 +13,25 @@ export type SearchData = {
   name: string;
 };
 
+export type SearchData ={
+  page: number;
+  results: SearchResult[];
+  total_pages: number;
+}
+
 export interface DataState {
-  loading?: boolean;
-  searchData?: SearchData[];
+  loading: boolean;
+  searchData: SearchData;
   error: string | undefined;
 }
 
 const initialState: DataState = {
   loading: false,
-  searchData: [],
+  searchData: {
+    page: 0,
+    results: [],
+    total_pages: 0,
+  },
   error: undefined,
 };
 
@@ -37,12 +47,35 @@ export const fetchSearch = createAsyncThunk(
         `https://api.themoviedb.org/3/search/multi`,
         { params }
       );
-      return response.data.results;
+      const { page, results, total_pages } = response.data;
+      const data = { page, results, total_pages };
+      return data;
     } catch (err) {
       return err;
     }
   }
 );
+
+export const searchPagination = createAsyncThunk(
+  "data/searchPagination",
+  async ({ currentPage, query }: { currentPage: number; query: string | null }) => {
+    try {
+      const params = {
+        api_key: import.meta.env.VITE_APP_API_KEY,
+        page: currentPage,
+        query,
+      };
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/search/multi`,
+        { params }
+      );
+      const { page, results, total_pages } = response.data;
+      const data = { page, results, total_pages };
+      return data;
+    } catch (err) {
+      return
+    }
+})
 
 export const searchSlice = createSlice({
   name: "search",
@@ -55,9 +88,21 @@ export const searchSlice = createSlice({
       })
       .addCase(fetchSearch.fulfilled, (state, action) => {
         state.loading = false;
-        state.searchData = action.payload;
+        state.searchData = action.payload as SearchData;
       })
       .addCase(fetchSearch.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(searchPagination.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(searchPagination.fulfilled, (state, action) => {
+        state.loading = false;
+        state.searchData = action.payload as SearchData;
+      })
+      .addCase(searchPagination.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

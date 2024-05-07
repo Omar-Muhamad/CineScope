@@ -1,8 +1,7 @@
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type MovieData = {
+export type MovieData = {
   id: number;
   media_type: string;
   backdrop_path: string;
@@ -13,15 +12,25 @@ type MovieData = {
   name: string;
 };
 
+type moviesData = {
+  page: number;
+  results: MovieData[];
+  total_pages: number;
+};
+
 interface MovieState {
-  loading?: boolean;
-  movies?: MovieData[];
+  loading: boolean;
+  movies: moviesData;
   error: string | undefined;
 }
 
 const initialState: MovieState = {
   loading: false,
-  movies: [],
+  movies: {
+    page: 0,
+    results: [],
+    total_pages: 0,
+  },
   error: undefined,
 };
 
@@ -34,11 +43,35 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
       "https://api.themoviedb.org/3/movie/popular",
       { params }
     );
-    return response.data.results;
+
+    const { page, results, total_pages } = response.data;
+    const data = { page, results, total_pages };
+    return data;
   } catch (err) {
     return err;
   }
 });
+
+export const moviesPagination = createAsyncThunk(
+  "movies/moviesPagination",
+  async ({ currentPage }: { currentPage: number }) => {
+    try {
+      const params = {
+        api_key: import.meta.env.VITE_APP_API_KEY,
+        page: currentPage,
+      };
+      const response = await axios.get(
+        "https://api.themoviedb.org/3/movie/popular",
+        { params }
+      );
+      const { page, results, total_pages } = response.data;
+      const data = { page, results, total_pages };
+      return data;
+    } catch (err) {
+      return err;
+    }
+  }
+);
 
 export const moviesSlice = createSlice({
   name: "movies",
@@ -51,9 +84,21 @@ export const moviesSlice = createSlice({
       })
       .addCase(fetchMovies.fulfilled, (state, action) => {
         state.loading = false;
-        state.movies = action.payload;
+        state.movies = action.payload as moviesData;
       })
       .addCase(fetchMovies.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(moviesPagination.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(moviesPagination.fulfilled, (state, action) => {
+        state.loading = false;
+        state.movies = action.payload as moviesData;
+      })
+      .addCase(moviesPagination.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
