@@ -25,7 +25,7 @@ const ItemCard: FC<ItemCardProps> = ({
   ratings,
   title,
 }) => {
-  const imageSrc = `https://image.tmdb.org/t/p/original/${imgSrc}`;
+  const imageSrc = `https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`;
   const nullImageSrc = "https://image.tmdb.org/t/p/original/null";
 
   return (

@@ -36,7 +36,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
         <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`} key={id}>
           <img
             className="w-full rounded-lg"
-            src={`https://image.tmdb.org/t/p/original/${imgSrc}`}
+            src={`https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`}
             alt={`${title} poster`}
           />
         </NavLink>

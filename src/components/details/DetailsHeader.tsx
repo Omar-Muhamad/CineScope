@@ -63,7 +63,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
       <section className="relative w-full h-[25vh] md:h-[450px]">
         <div
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${imageSrc})`,
+            backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${imageSrc})`,
           }}
           className="w-full h-full z-0 bg-black opacity-20 md:rounded-bl-2xl bg-cover bg-center md:bg-top bg-no-repeat"
         ></div>
@@ -72,7 +72,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           <div className="h-full hidden md:block">
             <img
               className="h-full rounded-xl"
-              src={`https://image.tmdb.org/t/p/original/${posterUrl}`}
+              src={`https://image.tmdb.org/t/p/w300/${posterUrl}`}
               alt={`${title} poster`}
             />
           </div>
