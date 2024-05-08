@@ -51,31 +51,33 @@ const Details: FC = () => {
           />
         ) : null}
       </div>
-      <section className="pl-6 md:pl-0">
-        <Heading as="h2">Recommendations</Heading>
-        <GridLayout>
-          {!loading && recommendations && recommendations.length !== 0
-            ? recommendations.map((item) => {
-                const movie = item.media_type === "movie";
-                return (
-                  <ItemCard
-                    key={item.id}
-                    id={item.id}
-                    imgSrc={item.backdrop_path}
-                    releaseDate={
-                      movie
-                        ? item.release_date?.substring(0, 4)
-                        : item.first_air_date?.substring(0, 4)
-                    }
-                    media_type={movie ? "movie" : "tv"}
-                    ratings={item.adult ? "18+" : "PG"}
-                    title={movie ? item.title : item.name}
-                  />
-                );
-              })
-            : null}
-        </GridLayout>
-      </section>
+      {!loading && (
+        <section className="pl-6 md:pl-0">
+          <Heading as="h2">Recommendations</Heading>
+          <GridLayout>
+            {recommendations && recommendations.length !== 0
+              ? recommendations.map((item) => {
+                  const movie = item.media_type === "movie";
+                  return (
+                    <ItemCard
+                      key={item.id}
+                      id={item.id}
+                      imgSrc={item.backdrop_path}
+                      releaseDate={
+                        movie
+                          ? item.release_date?.substring(0, 4)
+                          : item.first_air_date?.substring(0, 4)
+                      }
+                      media_type={movie ? "movie" : "tv"}
+                      ratings={item.adult ? "18+" : "PG"}
+                      title={movie ? item.title : item.name}
+                    />
+                  );
+                })
+              : null}
+          </GridLayout>
+        </section>
+      )}
     </main>
   );
 };

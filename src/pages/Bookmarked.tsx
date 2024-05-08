@@ -9,8 +9,6 @@ import { fetchBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch, RootState } from "@/redux/store";
 import Loading from "@/components/ui/Loading";
 
-
-
 const Bookmarked = () => {
   const { loading, bookmarks, error } = useSelector(
     (state: RootState) => state.bookmark
@@ -28,46 +26,50 @@ const Bookmarked = () => {
     <PageLayout>
       {loading && <Loading />}
       {!loading && error ? <p>error</p> : null}
-      <section>
-        <Heading as="h2">Bookmarked Movies</Heading>
-        {!loading && movies && movies?.length !== 0 ? (
-          <GridLayout>
-            {movies?.map((movie) => (
-              <ItemCard
-                key={movie.id}
-                id={movie.id}
-                imgSrc={movie.backdrop_path}
-                releaseDate={movie.release_date?.substring(0, 4)}
-                media_type="movie"
-                ratings={movie.adult ? "18+" : "PG"}
-                title={movie.title}
-              />
-            ))}
-          </GridLayout>
-        ) : (
-          <div className="">No Bookmarked Movies...</div>
-        )}
-      </section>
-      <section>
-        <Heading as="h2">Bookmarked TV Shows</Heading>
-        {!loading && tvShows && tvShows?.length !== 0 ? (
-          <GridLayout>
-            {tvShows?.map((tvShow) => (
-              <ItemCard
-                key={tvShow.id}
-                id={tvShow.id}
-                imgSrc={tvShow.backdrop_path}
-                releaseDate={tvShow.first_air_date?.substring(0, 4)}
-                media_type="tv"
-                ratings={tvShow.adult ? "18+" : "PG"}
-                title={tvShow.name}
-              />
-            ))}
-          </GridLayout>
-        ) : (
-          <div className="">No Bookmarked TV Shows...</div>
-        )}
-      </section>
+      {!loading && (
+        <>
+          <section>
+            <Heading as="h2">Bookmarked Movies</Heading>
+            {movies && movies?.length !== 0 ? (
+              <GridLayout>
+                {movies?.map((movie) => (
+                  <ItemCard
+                    key={movie.id}
+                    id={movie.id}
+                    imgSrc={movie.backdrop_path}
+                    releaseDate={movie.release_date?.substring(0, 4)}
+                    media_type="movie"
+                    ratings={movie.adult ? "18+" : "PG"}
+                    title={movie.title}
+                  />
+                ))}
+              </GridLayout>
+            ) : (
+              <div className="">No Bookmarked Movies...</div>
+            )}
+          </section>
+          <section>
+            <Heading as="h2">Bookmarked TV Shows</Heading>
+            {!loading && tvShows && tvShows?.length !== 0 ? (
+              <GridLayout>
+                {tvShows?.map((tvShow) => (
+                  <ItemCard
+                    key={tvShow.id}
+                    id={tvShow.id}
+                    imgSrc={tvShow.backdrop_path}
+                    releaseDate={tvShow.first_air_date?.substring(0, 4)}
+                    media_type="tv"
+                    ratings={tvShow.adult ? "18+" : "PG"}
+                    title={tvShow.name}
+                  />
+                ))}
+              </GridLayout>
+            ) : (
+              <div className="">No Bookmarked TV Shows...</div>
+            )}
+          </section>
+        </>
+      )}
     </PageLayout>
   );
 };
