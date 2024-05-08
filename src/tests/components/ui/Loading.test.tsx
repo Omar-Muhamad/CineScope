@@ -6,7 +6,7 @@ describe('Loading component', () => {
     render(<Loading />);
     const mainElement = screen.getByRole('main');
     expect(mainElement).toBeInTheDocument();
-    expect(mainElement).toHaveClass('w-full h-full flex flex-col justify-center items-center gap-5 -mt-20');
+    expect(mainElement).toHaveClass('w-full h-[600px] md:h-full flex flex-col justify-center items-center -mt-20 gap-5');
   });
 
   it('renders Heading component', () => {

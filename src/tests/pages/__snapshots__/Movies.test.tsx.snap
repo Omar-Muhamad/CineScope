@@ -36,23 +36,23 @@ exports[`Movies Page > renders Movies Page should match the screenshot 1`] = `
             type="text"
           />
         </div>
-        <main
-          class="w-full h-full flex flex-col justify-center items-center gap-5 -mt-20"
-        >
-          <div
-            class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
-          />
-          <h1
-            class="antialiased text-3xl font-outfitLight mt-8"
-          >
-            Loading..
-          </h1>
-        </main>
         <h1
           class="antialiased text-3xl font-outfitLight mt-8"
         >
           Popular Movies
         </h1>
+        <main
+          class="w-full h-[600px] md:h-full flex flex-col justify-center items-center -mt-20 gap-5"
+        >
+          <div
+            class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
+          />
+          <h1
+            class="font-outfitLight text-3xl"
+          >
+            Loading..
+          </h1>
+        </main>
         <ul
           class="w-full grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-6 pr-6"
         />
@@ -129,23 +129,23 @@ exports[`Movies Page > renders Movies Page should match the screenshot 1`] = `
           type="text"
         />
       </div>
-      <main
-        class="w-full h-full flex flex-col justify-center items-center gap-5 -mt-20"
-      >
-        <div
-          class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
-        />
-        <h1
-          class="antialiased text-3xl font-outfitLight mt-8"
-        >
-          Loading..
-        </h1>
-      </main>
       <h1
         class="antialiased text-3xl font-outfitLight mt-8"
       >
         Popular Movies
       </h1>
+      <main
+        class="w-full h-[600px] md:h-full flex flex-col justify-center items-center -mt-20 gap-5"
+      >
+        <div
+          class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
+        />
+        <h1
+          class="font-outfitLight text-3xl"
+        >
+          Loading..
+        </h1>
+      </main>
       <ul
         class="w-full grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-6 pr-6"
       />

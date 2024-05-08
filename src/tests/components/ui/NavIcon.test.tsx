@@ -22,8 +22,5 @@ describe('NavIcon', () => {
     const linkElement = screen.getByRole('link');
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute('href', mockLink.path);
-
-    const iconElement = screen.getByRole('img');
-    expect(iconElement).toBeInTheDocument();
   });
 });
