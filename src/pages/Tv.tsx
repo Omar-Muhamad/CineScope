@@ -38,8 +38,8 @@ const Tv: FC = () => {
 
   return (
     <PageLayout>
-      {loading && <Loading />}
       <Heading as="h1">Popular TV Shows</Heading>
+      {loading && <Loading />}
       {!loading && error ? <p>error</p> : null}
       <GridLayout>
         {!loading && currentItems && currentItems.length !== 0

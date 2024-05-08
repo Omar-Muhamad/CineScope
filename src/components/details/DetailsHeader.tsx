@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import movieTrailer from "movie-trailer";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
@@ -47,7 +47,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
         const embedUrl = `https://youtube.com/embed/${url.split("v=")[1]}`;
         setTrailerUrl(embedUrl);
       }
-      setIsModalOpened(true);
+     setIsModalOpened(true);
     } catch {
       setTrailerUrl(null);
     }
@@ -57,6 +57,12 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
     setIsModalOpened(false);
     setTrailerUrl(null);
   };
+
+  useEffect(() => {
+    if (isModalOpened) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [isModalOpened])
 
   return (
     <>
@@ -122,7 +128,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
       </section>
       {trailerUrl === null ? (
         isModalOpened && (
-          <div className="absolute z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
+          <div className="fixed z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
             <button
               className="absolute text-5xl right-10 top-10 hover:text-red-500 z-30"
               onClick={handleCloseBtn}
@@ -135,7 +141,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           </div>
         )
       ) : (
-        <div className="absolute z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center items-center">
+        <div className="fixed z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
           <div className="relative w-[320px] h-[200px] md:w-[640px] md:h-[360px] lg:w-[854px] lg:h-[480px]">
             <button
               className="absolute text-4xl -right-10 -top-10 hover:text-red-500 z-30"

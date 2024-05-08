@@ -42,8 +42,8 @@ const Movies: FC = () => {
 
   return (
     <PageLayout>
-      {loading && <Loading />}
       <Heading as="h1">Popular Movies</Heading>
+      {loading && <Loading />}
       <GridLayout>
         {!loading && error ? <p>error</p> : null}
         {!loading && currentItems && currentItems.length !== 0

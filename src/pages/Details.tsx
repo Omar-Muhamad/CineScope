@@ -33,7 +33,6 @@ const Details: FC = () => {
       {loading && <Loading />}
       <div className="">
         {!loading && error ? <p>error</p> : null}
-
         {!loading && details ? (
           <DetailsHeader
             id={details.id}

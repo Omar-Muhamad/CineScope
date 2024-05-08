@@ -30,10 +30,10 @@ const Home: FC = () => {
 
   return (
     <PageLayout>
-      {loading && <Loading />}
       <Heading as="h1" className="mt-6">
         Trending
       </Heading>
+      {loading && <Loading />}
       <Trending>
         {!loading && error && <p>error</p>}
         {!data.loading && trending && trending.length !== 0
