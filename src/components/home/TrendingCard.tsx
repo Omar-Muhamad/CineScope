@@ -26,7 +26,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
   const movie = media_type === "movie";
   return (
     <li className="relative">
-      <div className="relative item-image w-[50vw] md:w-[30vw]">
+      <div className="relative item-image w-[60vw] md:w-[500px]">
         <BookMark
           id={id}
           media_type={media_type}
