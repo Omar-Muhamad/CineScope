@@ -7,12 +7,12 @@ import { RiFilmFill } from "react-icons/ri";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 
 type TrendingCardProps = {
-  id: number | undefined;
-  imgSrc: string | undefined;
-  releaseDate: string | undefined;
-  media_type: string | undefined;
-  ratings: string | undefined;
-  title: string | undefined;
+  id: number;
+  imgSrc: string;
+  releaseDate: string;
+  media_type: string;
+  ratings: string;
+  title: string;
 };
 
 const TrendingCard: FC<TrendingCardProps> = ({
@@ -60,8 +60,8 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <h2 className="font-outfitMedium text-2xl">{title}</h2>
         </div>
 
-        <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100  bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
-          <Text size="sm" className="bg-[#00000080] py-2 px-3 rounded-full">
+        <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100 bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
+          <Text className="bg-[#00000080] py-3 px-5 rounded-full">
             See Details
           </Text>
         </div>
