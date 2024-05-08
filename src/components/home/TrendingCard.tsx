@@ -26,7 +26,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
   const movie = media_type === "movie";
   return (
     <li className="relative">
-      <div className="relative item-image w-[60vw] md:w-[30vw]">
+      <div className="relative item-image w-[50vw] md:w-[30vw]">
         <BookMark
           id={id}
           media_type={media_type}
@@ -36,7 +36,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           <img
             className="w-full rounded-lg"
             loading="eager"
-            src={`https://image.tmdb.org/t/p/w1280/${imgSrc}`}
+            src={`https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`}
             alt={`${title} poster`}
           />
         </NavLink>
