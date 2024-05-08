@@ -11,7 +11,7 @@ import Loading from "@/components/ui/Loading";
 
 
 
-const Favorites = () => {
+const Bookmarked = () => {
   const { loading, bookmarks, error } = useSelector(
     (state: RootState) => state.bookmark
   );
@@ -71,4 +71,4 @@ const Favorites = () => {
     </PageLayout>
   );
 };
-export default Favorites;
+export default Bookmarked;
