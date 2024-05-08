@@ -17,9 +17,10 @@ type SearchResultsProps = {
 const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [searchParams] = useSearchParams();
-  const query = searchParams.get("search");
+
   const { loading, searchData, error } = data;
   const {page, total_pages, results} = searchData;
+  const query = searchParams.get("search");
   const dispatch = useDispatch<AppDispatch>();
   
   const endOffset = itemOffset + 20;
