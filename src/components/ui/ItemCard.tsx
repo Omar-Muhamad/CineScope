@@ -32,13 +32,18 @@ const ItemCard: FC<ItemCardProps> = ({
 
   return (
     <li>
-      <div className="relative w-full">
-        <BookMark
-          id={id}
-          media_type={media_type}
-          className="absolute right-3 top-3 z-10"
-        />
-        <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
+      <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
+        <div className="relative w-full">
+          <BookMark
+            id={id}
+            media_type={media_type}
+            className="absolute peer right-3 top-3 z-10"
+          />
+          <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100  bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
+            <Text size="sm" className="bg-[#00000080] py-2 px-3 rounded-full">
+              See Details
+            </Text>
+          </div>
           <img
             className="w-full rounded-lg aspect-[16/9] object-cover"
             loading="lazy"
@@ -47,8 +52,8 @@ const ItemCard: FC<ItemCardProps> = ({
             src={imageSrc === nullImageSrc ? poster : imageSrc}
             alt={`${title} poster`}
           />
-        </NavLink>
-      </div>
+        </div>
+      </NavLink>
       <div className="mt-2">
         <div className="flex gap-2">
           <Text>{releaseDate}</Text>

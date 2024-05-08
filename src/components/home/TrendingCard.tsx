@@ -25,44 +25,47 @@ const TrendingCard: FC<TrendingCardProps> = ({
 }) => {
   const movie = media_type === "movie";
   return (
-    <li className="relative">
-      <div className="relative item-image w-[60vw] md:w-[500px]">
+    <li>
+      <NavLink className="relative" to={movie ? `/movie/${id}` : `/tv/${id}`}>
         <BookMark
           id={id}
           media_type={media_type}
-          className="absolute right-4 top-4"
+          className="absolute z-20 peer right-4 top-4"
         />
-        <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`}>
+
+        <div className="relative item-image w-[60vw] md:w-[30vw]">
           <img
             className="w-full rounded-lg"
             loading="eager"
-            src={`https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`}
+            src={`https://image.tmdb.org/t/p/w1280/${imgSrc}`}
             alt={`${title} poster`}
           />
-        </NavLink>
-      </div>
-
-      <div className="absolute bottom-5 left-7 item-description">
-        <div className="flex gap-2">
-          <Text>{releaseDate}</Text>
-          <span>•</span>
-          <div className="media-type flex items-center gap-1">
-            {media_type === "movie" ? (
-              <RiFilmFill className="text-md" />
-            ) : (
-              <PiTelevisionSimpleFill className="text-md" />
-            )}
-            <Text>{media_type}</Text>
-          </div>
-          <span>•</span>
-          <Text>{ratings}</Text>
         </div>
-        <NavLink to={movie ? `/movie/${id}` : `/tv/${id}`} key={id}>
-          <h2 className="font-outfitMedium text-2xl">
-            {title}
-          </h2>
-        </NavLink>
-      </div>
+
+        <div className="absolute bottom-5 left-7 item-description">
+          <div className="flex gap-2">
+            <Text>{releaseDate}</Text>
+            <span>•</span>
+            <div className="media-type flex items-center gap-1">
+              {media_type === "movie" ? (
+                <RiFilmFill className="text-md" />
+              ) : (
+                <PiTelevisionSimpleFill className="text-md" />
+              )}
+              <Text>{media_type}</Text>
+            </div>
+            <span>•</span>
+            <Text>{ratings}</Text>
+          </div>
+          <h2 className="font-outfitMedium text-2xl">{title}</h2>
+        </div>
+
+        <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100  bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
+          <Text size="sm" className="bg-[#00000080] py-2 px-3 rounded-full">
+            See Details
+          </Text>
+        </div>
+      </NavLink>
     </li>
   );
 };
