@@ -46,7 +46,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
         const embedUrl = `https://youtube.com/embed/${url.split("v=")[1]}`;
         setTrailerUrl(embedUrl);
       }
-     setIsModalOpened(true);
+      setIsModalOpened(true);
     } catch {
       setTrailerUrl(null);
     }
@@ -59,12 +59,12 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
   useEffect(() => {
     if (isModalOpened) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
-  }, [isModalOpened])
+  }, [isModalOpened]);
 
   return (
     <>
@@ -87,7 +87,9 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           </div>
 
           <div className="h-full md:mt-5 grow">
-            <Heading as="h1">{title}</Heading>
+            <Heading as="h1" className="mt-6">
+              {title}
+            </Heading>
 
             <div className="flex gap-2">
               {genres?.slice(0, 3).map((genre, i) => (
@@ -113,7 +115,13 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
 
             <div className="mt-2 flex gap-2">
               <PercentageCircle rating={rating * 10} />
-              <BookMark id={id} media_type={media_type} />
+              <div className="h-10 w-10">
+                <BookMark
+                  id={id}
+                  media_type={media_type}
+                  className="w-full h-full"
+                />
+              </div>
               <TrailerButton onClick={handlePlayTrailer} />
             </div>
 
@@ -122,7 +130,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
                 Overview:
               </Heading>
               <Text size="sm" className="text-[#c3c4c7]">
-                {overview?.length > 300 ? overview?.split(".")[0] : overview}
+                {overview}
               </Text>
             </div>
           </div>

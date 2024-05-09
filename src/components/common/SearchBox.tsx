@@ -24,7 +24,7 @@ const SearchBox: FC = () => {
         <IoSearch className="w-full h-full" />
       </div>
       <input
-        className="w-full bg-transparent py-3 text-xl outline-none focus:border-b-2 caret-orange"
+        className="w-full bg-transparent py-3 text-xl outline-none focus:border-b-2 caret-orange truncate text-ellipsis"
         type="text"
         placeholder="Search for movies and TV series..."
         onKeyDown={handleSearch}

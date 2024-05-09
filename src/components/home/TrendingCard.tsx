@@ -27,13 +27,11 @@ const TrendingCard: FC<TrendingCardProps> = ({
   return (
     <li>
       <NavLink className="relative" to={movie ? `/movie/${id}` : `/tv/${id}`}>
-        <BookMark
-          id={id}
-          media_type={media_type}
-          className="absolute z-20 peer right-4 top-4"
-        />
+        <div className="absolute w-8 h-8 z-20 peer right-4 top-4">
+          <BookMark id={id} media_type={media_type} className="w-full h-full" />
+        </div>
 
-        <div className="relative item-image w-[60vw] md:w-[30vw]">
+        <div className="relative item-image w-[80vw] md:w-[30vw]">
           <img
             className="w-full rounded-lg"
             loading="eager"
@@ -42,8 +40,8 @@ const TrendingCard: FC<TrendingCardProps> = ({
           />
         </div>
 
-        <div className="absolute bottom-5 left-7 item-description">
-          <div className="flex gap-2">
+        <div className="absolute inset-0 p-3 flex flex-col justify-end">
+          <div className="w-fit flex gap-2">
             <Text>{releaseDate}</Text>
             <span>•</span>
             <div className="media-type flex items-center gap-1">
@@ -57,11 +55,11 @@ const TrendingCard: FC<TrendingCardProps> = ({
             <span>•</span>
             <Text>{ratings}</Text>
           </div>
-          <h2 className="font-outfitMedium text-2xl">{title}</h2>
+          <h2 className="font-outfitMedium text-2xl truncate text-ellipsis">{title}</h2>
         </div>
 
-        <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100 bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
-          <Text className="bg-[#00000080] py-3 px-5 rounded-full">
+        <div className="absolute inset-0 opacity-0 hover:opacity-100 hover:duration-300 peer-hover:opacity-100 bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
+          <Text className="bg-white/70 text-black py-2 px-4 rounded-full">
             See Details
           </Text>
         </div>
