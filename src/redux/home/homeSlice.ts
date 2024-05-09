@@ -14,8 +14,8 @@ type HomeData = {
 };
 
 interface DataState {
-  loading?: boolean;
-  trending?: HomeData[];
+  loading: boolean;
+  trending: HomeData[];
   recommendations?: HomeData[];
   error: string | undefined;
 }

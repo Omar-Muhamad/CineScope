@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 
 import PageLayout from "@/components/layout/PageLayout";
 import ItemCard from "@/components/ui/ItemCard";
@@ -7,8 +8,6 @@ import GridLayout from "@/components/layout/GridLayout";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchTv, tvPagination } from "@/redux/tv/tvSlice";
 import Heading from "@/components/ui/Heading";
-import Loading from "@/components/ui/Loading";
-import ReactPaginate from "react-paginate";
 
 const Tv: FC = () => {
   const [itemOffset, setItemOffset] = useState(0);
@@ -33,9 +32,10 @@ const Tv: FC = () => {
   }, [dispatch]);
 
   return (
-    <PageLayout>
-      <Heading as="h1" className="mt-6">Popular TV Shows</Heading>
-      {loading && <Loading />}
+    <PageLayout loading={loading}>
+      <Heading as="h1" className="mt-6">
+        Popular TV Shows
+      </Heading>
       <GridLayout>
         {!loading && currentItems && currentItems.length !== 0
           ? currentItems.map((tvShow) => (

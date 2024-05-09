@@ -12,7 +12,6 @@ import {
   fetchMovies,
   moviesPagination,
 } from "@/redux/movies/moviesSlice";
-import Loading from "@/components/ui/Loading";
 
 const Movies: FC = () => {
   const [itemOffset, setItemOffset] = useState(0);
@@ -37,9 +36,10 @@ const Movies: FC = () => {
   }, [dispatch]);
 
   return (
-    <PageLayout>
-      <Heading as="h1" className="mt-6">Popular Movies</Heading>
-      {loading && <Loading />}
+    <PageLayout loading={loading}>
+      <Heading as="h1" className="mt-6">
+        Popular Movies
+      </Heading>
       <GridLayout>
         {!loading && currentItems && currentItems.length !== 0
           ? currentItems.map((movie: MovieData) => (

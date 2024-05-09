@@ -9,7 +9,6 @@ import { fetchRecommendations, fetchTrending } from "@/redux/home/homeSlice";
 import Trending from "@/components/home/Trending";
 import TrendingCard from "@/components/home/TrendingCard";
 import Heading from "@/components/ui/Heading";
-import Loading from "@/components/ui/Loading";
 
 const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
@@ -29,11 +28,10 @@ const Home: FC = () => {
   }, [dispatch]);
 
   return (
-    <PageLayout>
+    <PageLayout loading={loading}>
       <Heading as="h1" className="mt-6">
         Trending
       </Heading>
-      {loading && <Loading />}
       <Trending>
         {!data.loading && trending && trending.length !== 0
           ? [...(trendingData || []), ...(trendingData || [])].map(
@@ -60,7 +58,9 @@ const Home: FC = () => {
       </Trending>
 
       <section className="w-full">
-        <Heading as="h2" className="mt-6">Recommendations</Heading>
+        <Heading as="h2" className="mt-6">
+          Recommendations
+        </Heading>
         <GridLayout>
           {!loading && recommendations && recommendations.length !== 0
             ? recommendations.map((item) => {

@@ -7,10 +7,9 @@ import Heading from "@/components/ui/Heading";
 import ItemCard from "@/components/ui/ItemCard";
 import { fetchBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch, RootState } from "@/redux/store";
-import Loading from "@/components/ui/Loading";
 
 const Bookmarked = () => {
-  const { loading, bookmarks, error } = useSelector(
+  const { loading, bookmarks } = useSelector(
     (state: RootState) => state.bookmark
   );
   const dispatch = useDispatch<AppDispatch>();
@@ -23,12 +22,13 @@ const Bookmarked = () => {
   }, [dispatch]);
 
   return (
-    <PageLayout>
-      {loading && <Loading />}
+    <PageLayout loading={loading}>
       {!loading && (
         <>
           <section>
-            <Heading as="h2" className="mt-6">Bookmarked Movies</Heading>
+            <Heading as="h2" className="mt-6">
+              Bookmarked Movies
+            </Heading>
             {movies && movies?.length !== 0 ? (
               <GridLayout>
                 {movies?.map((movie) => (
@@ -48,7 +48,9 @@ const Bookmarked = () => {
             )}
           </section>
           <section>
-            <Heading as="h2" className="mt-6">Bookmarked TV Shows</Heading>
+            <Heading as="h2" className="mt-6">
+              Bookmarked TV Shows
+            </Heading>
             {!loading && tvShows && tvShows?.length !== 0 ? (
               <GridLayout>
                 {tvShows?.map((tvShow) => (

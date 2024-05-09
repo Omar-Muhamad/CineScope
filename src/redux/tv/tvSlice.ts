@@ -20,7 +20,7 @@ type TvShowsData = {
 };
 
 interface DataState {
-  loading?: boolean;
+  loading: boolean;
   tv: TvShowsData;
   error: string | undefined;
 }

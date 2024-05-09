@@ -29,10 +29,6 @@ body {
   background-color: #10141E;
 }
 
-nav {
-  height: calc(100% - 3rem);
-}
-
 @media (max-width: 768px) {
   .user-card {
     top: 6rem;

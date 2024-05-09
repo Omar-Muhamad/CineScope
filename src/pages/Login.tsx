@@ -12,7 +12,7 @@ import Text from "@/components/ui/Text";
 const Login = () => {
   const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
-  const { loading, session_id, error } = useSelector(
+  const { loading, session_id } = useSelector(
     (state: RootState) => state.user
   );
 

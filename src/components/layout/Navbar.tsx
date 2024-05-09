@@ -39,7 +39,7 @@ const Navbar: FC = () => {
   }, [dispatch]);
 
   return (
-    <nav className="relative flex md:flex-col justify-between items-center md:m-6 p-6 md:px-5 bg-secondary-dark md:rounded-2xl">
+    <nav className="relative h-[calc(100%-3rem)] flex md:flex-col justify-between items-center md:m-6 p-6 md:px-5 bg-secondary-dark md:rounded-2xl">
       <NavLink
         to="/"
         aria-label="link to main page"
