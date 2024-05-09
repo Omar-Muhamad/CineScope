@@ -32,7 +32,6 @@ const Details: FC = () => {
     <main className="w-full md:w-[calc(100%-8rem)] pb-6 md:ml-32 md:pl-0">
       {loading && <Loading />}
       <div className="">
-        {!loading && error ? <p>error</p> : null}
         {!loading && details ? (
           <DetailsHeader
             id={details.id}

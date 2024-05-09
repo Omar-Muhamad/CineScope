@@ -19,7 +19,7 @@ const SearchBox: FC = () => {
   useEffect(() => {}, [searchParams]);
 
   return (
-    <div className="w-full flex gap-6 items-start mt-5 pr-6 ">
+    <div className="w-full flex gap-6 items-start md:mt-5 pr-6 ">
       <div className="w-9 h-9">
         <IoSearch className="w-full h-full" />
       </div>

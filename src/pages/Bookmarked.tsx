@@ -25,11 +25,10 @@ const Bookmarked = () => {
   return (
     <PageLayout>
       {loading && <Loading />}
-      {!loading && error ? <p>error</p> : null}
       {!loading && (
         <>
           <section>
-            <Heading as="h2">Bookmarked Movies</Heading>
+            <Heading as="h2" className="mt-6">Bookmarked Movies</Heading>
             {movies && movies?.length !== 0 ? (
               <GridLayout>
                 {movies?.map((movie) => (
@@ -49,7 +48,7 @@ const Bookmarked = () => {
             )}
           </section>
           <section>
-            <Heading as="h2">Bookmarked TV Shows</Heading>
+            <Heading as="h2" className="mt-6">Bookmarked TV Shows</Heading>
             {!loading && tvShows && tvShows?.length !== 0 ? (
               <GridLayout>
                 {tvShows?.map((tvShow) => (

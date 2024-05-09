@@ -24,7 +24,6 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   const dispatch = useDispatch<AppDispatch>();
   
   const endOffset = itemOffset + 20;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = results.slice(itemOffset, endOffset);
   const pageCount = total_pages > 100 ? 100 : total_pages;
 
@@ -34,9 +33,6 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   const handlePageClick = async (event: { selected: number }) => {
     const newOffset = (event.selected * 20) % results.length;
     await dispatch(searchPagination({ currentPage: event.selected + 1, query }));
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
@@ -44,7 +40,6 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
     <main>
       <Heading as="h1">Search Results</Heading>
       {loading && <Loading />}
-      {!loading && error ? <p>error</p> : null}
       <section>
         <Heading as="h2">Movies</Heading>
         {!loading && movies && movies?.length !== 0 ? (

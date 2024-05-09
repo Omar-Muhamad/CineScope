@@ -28,8 +28,6 @@ const ItemCard: FC<ItemCardProps> = ({
   const imageSrc = `https://image.tmdb.org/t/p/w533_and_h300_bestv2/${imgSrc}`;
   const nullImageSrc = "https://image.tmdb.org/t/p/w533_and_h300_bestv2/null";
 
-  console.log(poster);
-
   return (
     <li>
       <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>

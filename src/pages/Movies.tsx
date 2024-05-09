@@ -23,16 +23,12 @@ const Movies: FC = () => {
   const { page, total_pages, results } = movies;
 
   const endOffset = itemOffset + 20;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = results.slice(itemOffset, endOffset);
   const pageCount = total_pages > 100 ? 100 : total_pages;
 
   const handlePageClick = async (event: { selected: number }) => {
     const newOffset = (event.selected * 20) % results.length;
     await dispatch(moviesPagination({ currentPage: event.selected + 1 }));
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 

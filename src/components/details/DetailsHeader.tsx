@@ -42,7 +42,6 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
   const handlePlayTrailer = async () => {
     try {
       const url = await movieTrailer(title || "top 10 movies 2024");
-      console.log(url);
       if (url !== null && url !== "") {
         const embedUrl = `https://youtube.com/embed/${url.split("v=")[1]}`;
         setTrailerUrl(embedUrl);
