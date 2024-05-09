@@ -6,7 +6,7 @@ import GridLayout from "@/components/layout/GridLayout";
 import ItemCard from "@/components/ui/ItemCard";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchRecommendations, fetchTrending } from "@/redux/home/homeSlice";
-import Trending from "@/components/home/Trending";
+import TrendingWrapper from "@/components/home/TrendingWrapper";
 import TrendingCard from "@/components/home/TrendingCard";
 import Heading from "@/components/ui/Heading";
 
@@ -32,7 +32,7 @@ const Home: FC = () => {
       <Heading as="h1" className="mt-6">
         Trending
       </Heading>
-      <Trending>
+      <TrendingWrapper>
         {!data.loading && trending && trending.length !== 0
           ? [...(trendingData || []), ...(trendingData || [])].map(
               (item, index: number) => {
@@ -55,7 +55,7 @@ const Home: FC = () => {
               }
             )
           : null}
-      </Trending>
+      </TrendingWrapper>
 
       <section className="w-full">
         <Heading as="h2" className="mt-6">
