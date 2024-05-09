@@ -8,6 +8,7 @@ import Bookmarked from "./pages/Bookmarked";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import RequireAuth from "./components/common/RequireAuth";
+import ErrorBoundary from "./components/common/ErrorBoundary";
 
 function App() {
   const { pathname } = useLocation();
@@ -18,22 +19,24 @@ function App() {
           <Navbar />
         </header>
       )}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/tv" element={<Tv />} />
-        <Route path="/:media_type/:id" element={<Details />} />
-        <Route
-          path="/bookmarked"
-          element={
-            <RequireAuth>
-              <Bookmarked />
-            </RequireAuth>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tv" element={<Tv />} />
+          <Route path="/:media_type/:id" element={<Details />} />
+          <Route
+            path="/bookmarked"
+            element={
+              <RequireAuth>
+                <Bookmarked />
+              </RequireAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ErrorBoundary>
     </div>
   );
 }

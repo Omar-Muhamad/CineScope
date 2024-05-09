@@ -39,11 +39,6 @@ const Login = () => {
 
   return (
     <div className="w-screen h-screen px-6 md:px-0 flex justify-center items-center">
-      {error && (
-        <div className="bg-secondary-dark w-[40vw] h-60 p-6 flex flex-col justify-center gap-6 rounded-xl">
-          <Heading as="h1">{error}</Heading>
-        </div>
-      )}
 
       {loading && (
         <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center items-center gap-6 rounded-xl">
@@ -72,7 +67,7 @@ const Login = () => {
         <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center gap-6 rounded-xl">
           <div className="flex flex-col items-center justify-center gap-6">
             <IoIosCheckmarkCircleOutline className="text-6xl text-orange" />
-            <Heading as="h1" className="mt-0">
+            <Heading as="h1" className="text-center">
               You are now logged in.
             </Heading>
           </div>

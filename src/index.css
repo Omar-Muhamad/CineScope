@@ -33,12 +33,6 @@ nav {
   height: calc(100% - 3rem);
 }
 
-@media (min-width: 768px) {
-  .page-layout {
-    width: calc(100% - 8rem);
-  }
-}
-
 @media (max-width: 768px) {
   .user-card {
     top: 6rem;

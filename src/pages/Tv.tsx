@@ -15,7 +15,7 @@ const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
   const dispatch = useDispatch<AppDispatch>();
 
-  const { loading, tv, error } = data;
+  const { loading, tv } = data;
   const { page, total_pages, results } = tv;
 
   const endOffset = itemOffset + 20;
@@ -38,9 +38,8 @@ const Tv: FC = () => {
 
   return (
     <PageLayout>
-      <Heading as="h1">Popular TV Shows</Heading>
+      <Heading as="h1" className="mt-6">Popular TV Shows</Heading>
       {loading && <Loading />}
-      {!loading && error ? <p>error</p> : null}
       <GridLayout>
         {!loading && currentItems && currentItems.length !== 0
           ? currentItems.map((tvShow) => (

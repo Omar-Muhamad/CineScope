@@ -19,7 +19,7 @@ const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);
   const dispatch = useDispatch<AppDispatch>();
 
-  const { loading, movies, error } = data;
+  const { loading, movies } = data;
   const { page, total_pages, results } = movies;
 
   const endOffset = itemOffset + 20;
@@ -42,10 +42,9 @@ const Movies: FC = () => {
 
   return (
     <PageLayout>
-      <Heading as="h1">Popular Movies</Heading>
+      <Heading as="h1" className="mt-6">Popular Movies</Heading>
       {loading && <Loading />}
       <GridLayout>
-        {!loading && error ? <p>error</p> : null}
         {!loading && currentItems && currentItems.length !== 0
           ? currentItems.map((movie: MovieData) => (
               <ItemCard

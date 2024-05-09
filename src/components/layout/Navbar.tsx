@@ -21,7 +21,9 @@ const navLinks = [
 const Navbar: FC = () => {
   const [isUserIconClicked, setIsUserIconClicked] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const { user } = useSelector((state: RootState) => state.user);
+  const { loading, user } = useSelector(
+    (state: RootState) => state.user
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = () => {
@@ -47,7 +49,7 @@ const Navbar: FC = () => {
       </NavLink>
       <div className="nav-links md:-mt-72 flex md:flex-col items-center gap-6">
         {navLinks.map((link) => (
-          <NavIcon key={link.id} link={link}/>
+          <NavIcon key={link.id} link={link} />
         ))}
       </div>
       <button
@@ -56,7 +58,7 @@ const Navbar: FC = () => {
         aria-label="User image"
         onClick={handleClick}
       >
-        {isLogged ? (
+        {isLogged && !loading ? (
           <img
             className="h-full w-full rounded-full"
             src={`https://gravatar.com/avatar/${user?.gravatar}`}

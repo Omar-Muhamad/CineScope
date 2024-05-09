@@ -15,7 +15,7 @@ const Home: FC = () => {
   const data = useSelector((state: RootState) => state.home);
   const dispatch = useDispatch<AppDispatch>();
 
-  const { loading, trending, recommendations, error } = data;
+  const { loading, trending, recommendations } = data;
   const trendingData = trending?.slice(0, 5);
 
   useEffect(() => {
@@ -35,7 +35,6 @@ const Home: FC = () => {
       </Heading>
       {loading && <Loading />}
       <Trending>
-        {!loading && error && <p>error</p>}
         {!data.loading && trending && trending.length !== 0
           ? [...(trendingData || []), ...(trendingData || [])].map(
               (item, index: number) => {
@@ -61,9 +60,8 @@ const Home: FC = () => {
       </Trending>
 
       <section className="w-full">
-        <Heading as="h2">Recommendations</Heading>
+        <Heading as="h2" className="mt-6">Recommendations</Heading>
         <GridLayout>
-          {!loading && error ? <p>error</p> : null}
           {!loading && recommendations && recommendations.length !== 0
             ? recommendations.map((item) => {
                 const movie = item.media_type === "movie";

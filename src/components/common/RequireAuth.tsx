@@ -12,7 +12,7 @@ const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
   return (
     <>
       {!isUser ? (
-        <div className="page-layout md:ml-32 md:pl-0 flex justify-center items-center">
+        <div className="w-full md:w-[calc(100%-8rem)] md:ml-32 md:pl-0 flex justify-center items-center">
           <div className="bg-secondary-dark p-20 rounded-xl">
             <div className="flex flex-col items-center justify-center">
               <AiOutlineExclamationCircle className="text-6xl text-orange" />

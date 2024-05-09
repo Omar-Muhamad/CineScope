@@ -9,8 +9,8 @@ const headingClasses = cva(["antialiased"], {
       sm: ["text-lg"],
     },
     as: {
-      h1: ["font-outfitLight", "mt-8"],
-      h2: ["font-outfitLight", "mt-6"],
+      h1: ["font-outfitLight"],
+      h2: ["font-outfitLight"],
       h3: ["font-outfitMedium"],
       h4: ["font-outfitMedium"],
       h5: ["font-outfitMedium"],
@@ -36,7 +36,7 @@ const Heading: FC<HeadingProps> = ({
   className,
   ...props
 }) => {
-  const Tag = as;
+  const Tag = as ;
   return (
     <Tag className={headingClasses({ size, as, className })} {...props}>
       {children}

@@ -23,7 +23,7 @@ const PageLayout: FC<PageLayoutProps> = ({ children }) => {
     }
   }, [searchParams, dispatch])
   return (
-    <main className="page-layout pb-6 md:pt-6 md:ml-32 pl-6">
+    <main className="w-full md:w-[calc(100%-8rem)] min-h-screen py-6 md:ml-32 pl-5 md:px-0">
       <SearchBox />
       {searchQuery ? <SearchResults data={searchData} /> : children}
     </main>
