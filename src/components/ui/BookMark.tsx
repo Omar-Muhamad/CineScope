@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 
 import { addBookmark, removeBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch } from "@/redux/store";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const BookMark = ({
-  id,
-  media_type,
-  className,
-}: {
-  id: number | undefined;
-  media_type: string | undefined;
+type BookMarkProps = {
+  id: number;
+  media_type: string;
   className?: string;
-}) => {
+};
+
+const BookMark: FC<BookMarkProps> = ({ id, media_type, className }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
+  const {pathname} = useLocation()
+  const navigate = useNavigate();
 
-  const checkBookmarked = async ({ id }: { id: number | undefined }) => {
+  const session_id = localStorage.getItem("session_id");
+
+  const checkBookmarked = async ({ id }: { id: number }) => {
     const params = {
       api_key: import.meta.env.VITE_APP_API_KEY,
     };
@@ -37,19 +40,23 @@ const BookMark = ({
   const handleClick = async () => {
     const session_id = localStorage.getItem("session_id");
     if (isBookmarked) {
-      await dispatch(removeBookmark({ id, media_type, session_id }));
+      await dispatch(removeBookmark({ id, media_type, session_id })).then(() => {
+        if (pathname === "/bookmarked") {
+          navigate(0)
+        }
+      });
       setIsBookmarked(false);
     } else {
-      await dispatch(addBookmark({ id, media_type, session_id }));
+      await dispatch(addBookmark({ id, media_type, session_id }))
       setIsBookmarked(true);
     }
   };
 
   useEffect(() => {
-    if (isBookmarked === false) {
+    if (isBookmarked === false && session_id) {
       checkBookmarked({ id }).then((res) => setIsBookmarked(res));
     }
-  }, [isBookmarked, id]);
+  }, [isBookmarked, id, session_id]);
 
   return (
     <div

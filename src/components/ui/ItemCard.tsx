@@ -10,7 +10,7 @@ import BookMark from "./BookMark";
 import LazyImage from "./LazyImage";
 
 type ItemCardProps = {
-  id?: number;
+  id: number;
   imgSrc: string;
   releaseDate: string;
   media_type: string;
@@ -31,27 +31,26 @@ const ItemCard: FC<ItemCardProps> = ({
 
   return (
     <li>
-      <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
-        <div className="relative w-full">
-          <div className="absolute w-8 h-8 peer right-3 top-3 z-10">
-          <BookMark
-            id={id}
-            media_type={media_type}
-            className="w-full h-full"
-          />
-          </div>
-          <div className="absolute inset-0 opacity-0 hover:opacity-100 peer-hover:opacity-100 hover:duration-300 bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
-            <Text size="sm" className="bg-white/70 text-black py-2 px-3 rounded-full">
-              See Details
-            </Text>
-          </div>
+      <div className="relative w-full">
+        <div className="absolute w-8 h-8 right-3 top-3 z-30">
+          <BookMark id={id} media_type={media_type} className="w-full h-full" />
+        </div>
+        <NavLink to={media_type === "movie" ? `/movie/${id}` : `/tv/${id}`}>
+        <div className="absolute z-10 inset-0 opacity-0 hover:opacity-100 hover:duration-300 bg-[#00000070] backdrop-blur-[2px] flex justify-center items-center">
+          <Text
+            size="sm"
+            className="bg-white/70 text-black py-2 px-3 rounded-full"
+          >
+            See Details
+          </Text>
+        </div>
           <LazyImage
             className="w-full rounded-lg aspect-[16/9] object-cover"
             src={imageSrc === nullImageSrc ? poster : imageSrc}
             alt={`${title} poster`}
           />
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
       <div className="mt-2">
         <div className="flex gap-2">
           <Text>{releaseDate}</Text>
