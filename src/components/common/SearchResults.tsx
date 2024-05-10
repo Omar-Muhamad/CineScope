@@ -1,5 +1,5 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { FC, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { useDispatch } from "react-redux";
 
