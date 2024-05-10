@@ -138,7 +138,7 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
       </section>
       {trailerUrl === null ? (
         isModalOpened && (
-          <div className="fixed z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
+          <div className="fixed z-50 inset-0 max-h-screen bg-black/80 backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
             <button
               className="absolute text-5xl right-10 top-10 hover:text-red-500 z-30"
               onClick={handleCloseBtn}
@@ -151,10 +151,10 @@ const DetailsHeader: FC<DetailsHeaderProps> = ({
           </div>
         )
       ) : (
-        <div className="fixed z-50 inset-0 max-h-screen bg-[#00000080] backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
+        <div className="fixed z-50 inset-0 max-h-screen bg-black/80 backdrop-blur-[2px] flex justify-center overflow-y-hidden items-center">
           <div className="relative w-[320px] h-[200px] md:w-[640px] md:h-[360px] lg:w-[854px] lg:h-[480px]">
             <button
-              className="absolute text-4xl -right-10 -top-10 hover:text-red-500 z-30"
+              className="absolute text-4xl -right-5 -top-8 md:-right-10 md:-top-10  hover:text-red-500 z-30"
               onClick={handleCloseBtn}
             >
               <IoCloseCircleOutline />

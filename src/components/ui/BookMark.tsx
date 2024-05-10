@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 
 import { addBookmark, removeBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch } from "@/redux/store";
 import { useLocation, useNavigate } from "react-router-dom";
+import { checkBookmarked } from "@/lib/api";
 
 type BookMarkProps = {
   id: number;
@@ -20,22 +20,6 @@ const BookMark: FC<BookMarkProps> = ({ id, media_type, className }) => {
   const navigate = useNavigate();
 
   const session_id = localStorage.getItem("session_id");
-
-  const checkBookmarked = async ({ id }: { id: number }) => {
-    const params = {
-      api_key: import.meta.env.VITE_APP_API_KEY,
-    };
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/list/8299412/item_status`,
-      {
-        params: {
-          ...params,
-          movie_id: id,
-        },
-      }
-    );
-    return response.data.item_present;
-  };
 
   const handleClick = async () => {
     const session_id = localStorage.getItem("session_id");
