@@ -6,186 +6,30 @@ exports[`Movies Page > renders Movies Page should match the screenshot 1`] = `
   "baseElement": <body>
     <div>
       <main
-        class="page-layout pb-6 md:pt-6 md:ml-32 pl-6  md:pl-0"
+        class="w-full md:w-[calc(100%-8rem)] min-h-screen py-6 md:ml-32 pl-5 md:px-0"
       >
         <div
-          class="w-full flex gap-6 items-start mt-5 pr-6 "
+          class="h-[calc(100vh-12rem)] md:h-full w-full flex justify-center items-center md:pr-6"
+          data-testid="loading-component"
         >
           <div
-            class="w-9 h-9"
-          >
-            <svg
-              class="w-full h-full"
-              fill="currentColor"
-              height="1em"
-              stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 512 512"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M456.69 421.39 362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3zM97.92 222.72a124.8 124.8 0 1 1 124.8 124.8 124.95 124.95 0 0 1-124.8-124.8z"
-              />
-            </svg>
-          </div>
-          <input
-            class="w-full bg-transparent py-3 -mt-2 text-xl outline-none focus:border-b-2 caret-orange"
-            placeholder="Search for movies and TV series..."
-            required=""
-            type="text"
+            class="w-12 h-12 md:w-14 md:h-14 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
           />
-        </div>
-        <h1
-          class="antialiased text-3xl font-outfitLight mt-8"
-        >
-          Popular Movies
-        </h1>
-        <main
-          class="w-full h-[600px] md:h-full flex flex-col justify-center items-center -mt-20 gap-5"
-        >
-          <div
-            class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
-          />
-          <h1
-            class="font-outfitLight text-3xl"
-          >
-            Loading..
-          </h1>
-        </main>
-        <ul
-          class="w-full grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-6 pr-6"
-        />
-        <div
-          class="pr-6 md:pr-0"
-        >
-          <ul
-            aria-label="Pagination"
-            class="mt-8 bg-secondary-dark w-full md:w-fit mx-auto p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 md:gap-5 text-lg text-white font-outfitMedium"
-            role="navigation"
-          >
-            <li
-              class="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange"
-            >
-              <a
-                aria-disabled="false"
-                aria-label="previous"
-                class=""
-                rel="prev"
-                role="button"
-                tabindex="0"
-              >
-                &lt;
-              </a>
-            </li>
-            <li
-              class="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange disabled"
-            >
-              <a
-                aria-disabled="true"
-                aria-label="next"
-                class=" "
-                rel="next"
-                role="button"
-                tabindex="-1"
-              >
-                &gt;
-              </a>
-            </li>
-          </ul>
         </div>
       </main>
     </div>
   </body>,
   "container": <div>
     <main
-      class="page-layout pb-6 md:pt-6 md:ml-32 pl-6  md:pl-0"
+      class="w-full md:w-[calc(100%-8rem)] min-h-screen py-6 md:ml-32 pl-5 md:px-0"
     >
       <div
-        class="w-full flex gap-6 items-start mt-5 pr-6 "
+        class="h-[calc(100vh-12rem)] md:h-full w-full flex justify-center items-center md:pr-6"
+        data-testid="loading-component"
       >
         <div
-          class="w-9 h-9"
-        >
-          <svg
-            class="w-full h-full"
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 512 512"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M456.69 421.39 362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3zM97.92 222.72a124.8 124.8 0 1 1 124.8 124.8 124.95 124.95 0 0 1-124.8-124.8z"
-            />
-          </svg>
-        </div>
-        <input
-          class="w-full bg-transparent py-3 -mt-2 text-xl outline-none focus:border-b-2 caret-orange"
-          placeholder="Search for movies and TV series..."
-          required=""
-          type="text"
+          class="w-12 h-12 md:w-14 md:h-14 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
         />
-      </div>
-      <h1
-        class="antialiased text-3xl font-outfitLight mt-8"
-      >
-        Popular Movies
-      </h1>
-      <main
-        class="w-full h-[600px] md:h-full flex flex-col justify-center items-center -mt-20 gap-5"
-      >
-        <div
-          class="w-12 h-12 border-[5px] border-t-orange rounded-full border-[#ffffff90] animate-spin"
-        />
-        <h1
-          class="font-outfitLight text-3xl"
-        >
-          Loading..
-        </h1>
-      </main>
-      <ul
-        class="w-full grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 mt-6 pr-6"
-      />
-      <div
-        class="pr-6 md:pr-0"
-      >
-        <ul
-          aria-label="Pagination"
-          class="mt-8 bg-secondary-dark w-full md:w-fit mx-auto p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 md:gap-5 text-lg text-white font-outfitMedium"
-          role="navigation"
-        >
-          <li
-            class="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange"
-          >
-            <a
-              aria-disabled="false"
-              aria-label="previous"
-              class=""
-              rel="prev"
-              role="button"
-              tabindex="0"
-            >
-              &lt;
-            </a>
-          </li>
-          <li
-            class="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange disabled"
-          >
-            <a
-              aria-disabled="true"
-              aria-label="next"
-              class=" "
-              rel="next"
-              role="button"
-              tabindex="-1"
-            >
-              &gt;
-            </a>
-          </li>
-        </ul>
       </div>
     </main>
   </div>,

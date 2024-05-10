@@ -50,5 +50,4 @@ describe("SearchBox", () => {
     await user.type(input, "test");
     expect(input).toHaveValue("test");
   });
-  
 });

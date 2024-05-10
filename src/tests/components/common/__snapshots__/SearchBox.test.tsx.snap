@@ -3,10 +3,10 @@
 exports[`SearchBox > renders correctly 1`] = `
 <div>
   <div
-    class="w-full flex gap-6 items-start mt-5 pr-6 "
+    class="w-full flex gap-6 items-start justify-center md:mt-3 pr-6"
   >
     <div
-      class="w-9 h-9"
+      class="w-9 h-9 mt-2"
     >
       <svg
         class="w-full h-full"
@@ -24,7 +24,7 @@ exports[`SearchBox > renders correctly 1`] = `
       </svg>
     </div>
     <input
-      class="w-full bg-transparent py-3 -mt-2 text-xl outline-none focus:border-b-2 caret-orange"
+      class="w-full bg-transparent py-3 text-xl outline-none focus:border-b-2 caret-orange truncate text-ellipsis"
       placeholder="Search for movies and TV series..."
       required=""
       type="text"
