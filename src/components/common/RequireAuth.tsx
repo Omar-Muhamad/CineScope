@@ -24,7 +24,7 @@ const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
           </div>
         </div>
       ) : (
-         children 
+        children 
       )}
     </>
   );

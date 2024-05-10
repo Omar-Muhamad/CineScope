@@ -1,4 +1,3 @@
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -13,11 +12,11 @@ export type SearchResult = {
   name: string;
 };
 
-export type SearchData ={
+export type SearchData = {
   page: number;
   results: SearchResult[];
   total_pages: number;
-}
+};
 
 export interface DataState {
   loading: boolean;
@@ -50,15 +49,21 @@ export const fetchSearch = createAsyncThunk(
       const { page, results, total_pages } = response.data;
       const data = { page, results, total_pages };
       return data;
-    } catch (err) {
-      return err;
+    } catch (error) {
+      return error;
     }
   }
 );
 
 export const searchPagination = createAsyncThunk(
   "data/searchPagination",
-  async ({ currentPage, query }: { currentPage: number; query: string | null }) => {
+  async ({
+    currentPage,
+    query,
+  }: {
+    currentPage: number;
+    query: string | null;
+  }) => {
     try {
       const params = {
         api_key: import.meta.env.VITE_APP_API_KEY,
@@ -73,9 +78,10 @@ export const searchPagination = createAsyncThunk(
       const data = { page, results, total_pages };
       return data;
     } catch (err) {
-      return
+      return err;
     }
-})
+  }
+);
 
 export const searchSlice = createSlice({
   name: "search",

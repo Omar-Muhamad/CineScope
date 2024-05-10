@@ -47,7 +47,7 @@ const Navbar: FC = () => {
       >
         <Logo />
       </NavLink>
-      <div className="nav-links md:-mt-72 flex md:flex-col items-center gap-6">
+      <div data-testid='nav-links' className="md:-mt-72 flex md:flex-col items-center gap-6">
         {navLinks.map((link) => (
           <NavIcon key={link.id} link={link} />
         ))}

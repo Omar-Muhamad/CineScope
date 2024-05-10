@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { useDispatch } from "react-redux";
@@ -65,20 +65,21 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
             {!loading && movies && movies?.length !== 0 ? (
               <GridLayout>
                 {movies?.map((movie: SearchResult) => (
-                  <NavLink to={`/movie/${movie.id}`} key={movie.id}>
-                    <ItemCard
-                      id={movie.id}
-                      imgSrc={movie.backdrop_path}
-                      releaseDate={movie.release_date?.substring(0, 4)}
-                      media_type={movie.media_type}
-                      ratings={movie.adult ? "18+" : "PG"}
-                      title={movie.title}
-                    />
-                  </NavLink>
+                  <ItemCard
+                    key={movie.id}
+                    id={movie.id}
+                    imgSrc={movie.backdrop_path}
+                    releaseDate={movie.release_date?.substring(0, 4)}
+                    media_type={movie.media_type}
+                    ratings={movie.adult ? "18+" : "PG"}
+                    title={movie.title}
+                  />
                 ))}
               </GridLayout>
             ) : (
-              <Text className="text-lg py-2 text-center text-orange">No movies match your search</Text>
+              <Text className="text-lg py-2 text-center text-orange">
+                No movies match your search
+              </Text>
             )}
           </section>
           <section>
@@ -88,20 +89,21 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
             {!loading && tvShows && tvShows?.length !== 0 ? (
               <GridLayout>
                 {tvShows?.map((tvShow: SearchResult) => (
-                  <NavLink to={`/tv/${tvShow.id}`} key={tvShow.id}>
-                    <ItemCard
-                      id={tvShow.id}
-                      imgSrc={tvShow.backdrop_path}
-                      releaseDate={tvShow.first_air_date?.substring(0, 4)}
-                      media_type="tv"
-                      ratings={tvShow.adult ? "18+" : "PG"}
-                      title={tvShow.name}
-                    />
-                  </NavLink>
+                  <ItemCard
+                    key={tvShow.id}
+                    id={tvShow.id}
+                    imgSrc={tvShow.backdrop_path}
+                    releaseDate={tvShow.first_air_date?.substring(0, 4)}
+                    media_type="tv"
+                    ratings={tvShow.adult ? "18+" : "PG"}
+                    title={tvShow.name}
+                  />
                 ))}
               </GridLayout>
             ) : (
-              <Text className="text-lg py-2 text-center text-orange">No TV shows match your search</Text>
+              <Text className="text-lg py-2 text-center text-orange">
+                No TV shows match your search
+              </Text>
             )}
           </section>
           <div className="pr-6 md:pr-0">

@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+
 import Navbar from "./components/layout/Navbar";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
@@ -9,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import RequireAuth from "./components/common/RequireAuth";
 import ErrorBoundary from "./components/common/ErrorBoundary";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { pathname } = useLocation();
