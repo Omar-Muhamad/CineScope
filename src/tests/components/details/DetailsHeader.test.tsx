@@ -3,7 +3,7 @@ import DetailsHeader from "@/components/details/DetailsHeader";
 
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
-
+import { MemoryRouter } from "react-router-dom";
 
 describe("DetailsHeader", () => {
   const defaultProps = {
@@ -24,10 +24,12 @@ describe("DetailsHeader", () => {
   it("renders correctly with given props", () => {
     render(
       <Provider store={store}>
-        <DetailsHeader {...defaultProps} />
+        <MemoryRouter>
+          <DetailsHeader {...defaultProps} />
+        </MemoryRouter>
       </Provider>
     );
     expect(screen.getByTestId("details-poster-image")).toBeInTheDocument();
-    expect(screen.getByTestId('details-rating')).toBeInTheDocument();
+    expect(screen.getByTestId("details-rating")).toBeInTheDocument();
   });
 });
