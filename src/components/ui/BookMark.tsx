@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { IoBookmark, IoBookmarkOutline  } from "react-icons/io5";
+import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 
 import { addBookmark, removeBookmark } from "@/redux/bookmarked/bookmarkSlice";
 import { AppDispatch } from "@/redux/store";
@@ -38,10 +38,10 @@ const BookMark = ({
     const session_id = localStorage.getItem("session_id");
     if (isBookmarked) {
       await dispatch(removeBookmark({ id, media_type, session_id }));
-      await setIsBookmarked(false);
+      setIsBookmarked(false);
     } else {
       await dispatch(addBookmark({ id, media_type, session_id }));
-      await setIsBookmarked(true);
+      setIsBookmarked(true);
     }
   };
 

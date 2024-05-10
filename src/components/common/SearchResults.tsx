@@ -1,6 +1,5 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useSearchParams } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import { useDispatch } from "react-redux";
 
 import {
@@ -14,22 +13,22 @@ import Heading from "../ui/Heading";
 import Loading from "./Loading";
 import { AppDispatch } from "@/redux/store";
 import Text from "../ui/Text";
+import ReactPagination from "./ReactPaginate";
 
 type SearchResultsProps = {
   data: DataState;
 };
 
 const SearchResults: FC<SearchResultsProps> = ({ data }) => {
-  const [itemOffset, setItemOffset] = useState(0);
   const [searchParams] = useSearchParams();
-
-  const { loading, searchData } = data;
-  const { page, total_pages, results } = searchData;
-  const query = searchParams.get("search");
   const dispatch = useDispatch<AppDispatch>();
 
-  const endOffset = itemOffset + 20;
-  const currentItems = results.slice(itemOffset, endOffset);
+  const query = searchParams.get("search");
+  const { loading, searchData } = data;
+  const { page, total_pages, results } = searchData;
+
+
+  const currentItems = results
   const pageCount = total_pages > 100 ? 100 : total_pages;
 
   const movies = currentItems?.filter(
@@ -40,11 +39,9 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
   );
 
   const handlePageClick = async (event: { selected: number }) => {
-    const newOffset = (event.selected * 20) % results.length;
     await dispatch(
       searchPagination({ currentPage: event.selected + 1, query })
     );
-    setItemOffset(newOffset);
   };
 
   return (
@@ -107,23 +104,7 @@ const SearchResults: FC<SearchResultsProps> = ({ data }) => {
             )}
           </section>
           <div className="pr-6 md:pr-0">
-            <ReactPaginate
-              nextAriaLabel="next"
-              previousAriaLabel="previous"
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              marginPagesDisplayed={1}
-              forcePage={page - 1}
-              previousLabel={"<"}
-              nextLabel={">"}
-              breakLabel={"..."}
-              className="mt-8 bg-secondary-dark w-full md:w-fit mx-auto p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 md:gap-5 text-lg text-white font-outfitMedium"
-              pageClassName="px-2 rounded-md"
-              activeClassName="px-2 md:px-3 py-[3px] bg-orange rounded-full"
-              activeLinkClassName="md:w-3 md:h-3 bg-orange"
-              previousClassName="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange"
-              nextClassName="px-2 md:px-4 py-1 bg-orange rounded-md cursor-pointer hover:bg-white hover:text-orange"
-            />
+            <ReactPagination pageCount={pageCount} handlePageClick={handlePageClick} page={page}/>
           </div>
         </div>
       )}

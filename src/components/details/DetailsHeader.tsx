@@ -4,7 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 
 import Text from "../ui/Text";
 import Heading from "../ui/Heading";
-import PercentageCircle from "../ui/PercentageCircle";
+import PercentageCircle from "../../icons/PercentageCircle";
 import BookMark from "../ui/BookMark";
 import TrailerButton from "./TrailerButton";
 import { PiTelevisionSimpleFill } from "react-icons/pi";

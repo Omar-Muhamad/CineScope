@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, KeyboardEvent, useEffect } from "react";
+import { ChangeEvent, FC, KeyboardEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 
@@ -15,8 +15,6 @@ const SearchBox: FC = () => {
       setSearchParams(newSearchParams, { replace: true });
     }
   };
-
-  useEffect(() => {}, [searchParams]);
 
   return (
     <div className="w-full flex gap-6 items-start justify-center md:mt-3 pr-6">
