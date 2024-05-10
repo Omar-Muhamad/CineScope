@@ -13,7 +13,7 @@ import Heading from "../ui/Heading";
 import Loading from "./Loading";
 import { AppDispatch } from "@/redux/store";
 import Text from "../ui/Text";
-import ReactPagination from "./ReactPaginate";
+import ReactPagination from "./ReactPagination";
 
 type SearchResultsProps = {
   data: DataState;

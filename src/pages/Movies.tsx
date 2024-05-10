@@ -11,7 +11,7 @@ import {
   fetchMovies,
   moviesPagination,
 } from "@/redux/movies/moviesSlice";
-import ReactPagination from "@/components/common/ReactPaginate";
+import ReactPagination from "@/components/common/ReactPagination";
 
 const Movies: FC = () => {
   const data = useSelector((state: RootState) => state.movies);

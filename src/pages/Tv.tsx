@@ -7,7 +7,7 @@ import GridLayout from "@/components/layout/GridLayout";
 import { AppDispatch, RootState } from "@/redux/store";
 import { fetchTv, tvPagination } from "@/redux/tv/tvSlice";
 import Heading from "@/components/ui/Heading";
-import ReactPagination from "@/components/common/ReactPaginate";
+import ReactPagination from "@/components/common/ReactPagination";
 
 const Tv: FC = () => {
   const data = useSelector((state: RootState) => state.tv);
