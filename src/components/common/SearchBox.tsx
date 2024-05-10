@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 
 const SearchBox: FC = () => {
+  // @ts-ignore-error
   const [searchParams, setSearchParams] = useSearchParams("");
 
   const handleSearch = (
