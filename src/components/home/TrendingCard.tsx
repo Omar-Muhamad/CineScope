@@ -5,6 +5,7 @@ import Text from "../ui/Text";
 import BookMark from "../ui/BookMark";
 import { RiFilmFill } from "react-icons/ri";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
+import LazyImage from "../ui/LazyImage";
 
 type TrendingCardProps = {
   id: number;
@@ -32,9 +33,8 @@ const TrendingCard: FC<TrendingCardProps> = ({
         </div>
 
         <div className="relative item-image w-[80vw] md:w-[30vw]">
-          <img
+          <LazyImage
             className="w-full rounded-lg"
-            loading="eager"
             src={`https://image.tmdb.org/t/p/w1280/${imgSrc}`}
             alt={`${title} poster`}
           />

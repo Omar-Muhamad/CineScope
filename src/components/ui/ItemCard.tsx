@@ -7,6 +7,7 @@ import poster from "@/assets/images/default-poster.png";
 import Heading from "./Heading";
 import Text from "./Text";
 import BookMark from "./BookMark";
+import LazyImage from "./LazyImage";
 
 type ItemCardProps = {
   id?: number;
@@ -44,11 +45,8 @@ const ItemCard: FC<ItemCardProps> = ({
               See Details
             </Text>
           </div>
-          <img
+          <LazyImage
             className="w-full rounded-lg aspect-[16/9] object-cover"
-            loading="lazy"
-            decoding="async"
-            max-width="500px"
             src={imageSrc === nullImageSrc ? poster : imageSrc}
             alt={`${title} poster`}
           />
