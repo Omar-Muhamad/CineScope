@@ -49,7 +49,7 @@ const Login = () => {
 
       {!loading && !isLogged && (
         <div className="bg-secondary-dark w-[500px] p-10 flex flex-col justify-center gap-6 rounded-xl">
-          <Heading as="h1" className="-mt-1">
+          <Heading as="h1" className="-mt-1" data-test-id='login-heading'>
             Login
           </Heading>
           <Text>
@@ -57,7 +57,7 @@ const Login = () => {
             <br />
             To create a new session for you.
           </Text>
-          <Button className="w-full py-4" onClick={handleLogin}>
+          <Button data-test-id='login-button' className="w-full py-4" onClick={handleLogin}>
             Login
           </Button>
         </div>

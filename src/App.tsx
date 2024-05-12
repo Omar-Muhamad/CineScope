@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import RequireAuth from "./components/common/RequireAuth";
 import ErrorBoundary from "./components/common/ErrorBoundary";
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { pathname } = useLocation();
