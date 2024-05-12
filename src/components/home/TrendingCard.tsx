@@ -39,7 +39,7 @@ const TrendingCard: FC<TrendingCardProps> = ({
           />
         </div>
 
-        <div className="absolute inset-0 p-3 flex flex-col justify-end">
+        <div className="absolute inset-0 p-3 md:p-5 flex flex-col justify-end">
           <div className="w-fit flex gap-2">
             <Text>{releaseDate}</Text>
             <span>•</span>
